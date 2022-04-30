@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose");
 const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema(
+const instructorSchema = new Schema(
   {
     email: {
       type: String,
@@ -15,17 +15,18 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
-    name: String,
-    instructor: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Instructor",
-    },
+    clients: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-const User = model("User", userSchema);
+const Instructor = model("User", instructorSchema);
 
-module.exports = User;
+module.exports = Instructor;
