@@ -39,6 +39,9 @@ app.use("/instructor", instructorRoutes);
 const workoutRoutes = require("./routes/workouts.routes");
 app.use("/workout", workoutRoutes);
 
+const exercisesRoutes = require("./routes/exercises.routes");
+app.use("/exercises", exercisesRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
