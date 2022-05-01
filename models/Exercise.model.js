@@ -7,7 +7,11 @@ const exerciseSchema = new Schema({
     required: true,
     trim: true,
   },
-  catagory: {
+  image: {
+    data: Buffer,
+    type: String,
+  },
+  category: {
     type: [String],
     enum: ["Weight", "Yoga", "Cardio", "Interval", "Dance", "Balance", "Other"],
   },
