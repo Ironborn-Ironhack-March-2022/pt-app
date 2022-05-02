@@ -36,7 +36,7 @@ router.post("/:instructorId/add-client", (req, res, next) => {
                 console.log(instructorDetails)
                 res.render("instructors/clients-list.hbs", {clients: instructorDetails.clients})
             })
-            .catch(err => next)
+            .catch(err => next(err))
         })
         // need to add instructor to client as well 
         .catch(err => next(err))
