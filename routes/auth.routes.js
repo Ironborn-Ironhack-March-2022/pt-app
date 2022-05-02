@@ -80,7 +80,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         console.log('here.....',req.session)
         req.session.user = user;
-        res.redirect("/");
+        if (user.role === "Client"){
+          return res.redirect('/client/profile')
+        } else {
+          return res.redirect("/instructor/profile");
+        };
       })
       .catch((error) => {
         console.log(error)
@@ -142,7 +146,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        if (user.role === "Client"){
+          return res.redirect('/client/profile')
+        } else {
+          return res.redirect("/instructor/profile");
+        }
+        
       });
     })
 
@@ -150,7 +159,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
       // you can just as easily run the res.status that is commented out below
       next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
+      return res.status(500).render("login", { errorMessage: err.message });
     });
 });
 
