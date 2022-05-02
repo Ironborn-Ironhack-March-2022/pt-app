@@ -1,4 +1,4 @@
-<form action="/exercises/create" method="post">
+<form action="/exercises/create" method="POST" enctype="multipart/form-data">
   Add/Create an exercise:
   <label>Name:
     <input type="text" name="name" />
@@ -12,32 +12,36 @@
   <label>
     Reps:
     <select name="reps" id="">
-      <option value="reps">1</option>
-      <option value="reps">2</option>
-      <option value="reps">3</option>
-      <option value="reps">4</option>
-      <option value="reps">5</option>
-      <option value="reps">6</option>
-      <option value="reps">7</option>
-      <option value="reps">8</option>
-      <option value="reps">9</option>
-      <option value="reps">10</option>
-      <option value="reps">11</option>
-      <option value="reps">12</option>
-      <option value="reps">13</option>
-      <option value="reps">14</option>
-      <option value="reps">15</option>
-      <option value="reps">N/A</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="N/A">N/A</option>
     </select>
   </label>
   <label>Sets:
     <select name="sets" id="">
-      <option value="sets">1</option>
-      <option value="sets">2</option>
-      <option value="sets">3</option>
-      <option value="sets">4</option>
-      <option value="sets">5</option>
-      <option value="sets">N/A</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="N/A">N/A</option>
     </select>
   </label>
+  <label>Image:</label>
+  <input type="file" id="image_input" name="file" accept="image/*" />
+
+  <button type="submit">Create!</button>
 </form>
