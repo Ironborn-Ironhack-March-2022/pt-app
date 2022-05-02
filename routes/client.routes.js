@@ -9,23 +9,41 @@ const isClient = require("../middleware/isClient");
 module.exports = router;
 
 //Homepage
-router.get("/homepage", isLoggedIn, isClient,(req, res, next) => {
-    res.render("clients/client-homepage");
+router.get("/homepage", (req, res, next) => {
+  User.findById(req.session.user._id).then((clientDetails) => {
+    res.render("clients/client-homepage.hbs", { clientDetails: clientDetails });
+  })
+  .catch((err) => {
+    next(err);
+  })
 });
 
 //Profile
-router.get("/profile/", isLoggedIn, isClient, (req, res, next) => {
-    console.log(req.session.user.id)
-    res.render("clients/client-profile");
+router.get("/profile", (req, res, next) => {
+  User.findById(req.session.user._id)
+    .then((clientDetails) => {
+      res.render("clients/client-profile.hbs", { client: clientDetails });
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
 
 //Tasks-list
 router.get("/tasks", isLoggedIn, isClient, (req, res, next) => {
-    res.render("clients/client-tasks");
+  User.findById(req.session.user._id).then((clientDetails) => {
+    res.render("clients/client-tasks", clientDetails);
+  });
 });
 
 //Exercise-list
 router.get("/exercises", isLoggedIn, isClient, (req, res, next) => {
-    res.render("clients/exercises-list");
+  res.render("clients/exercises-list");
 });
 
+//Client-day
+router.get("/:clientid/client-day", isLoggedIn, isClient, (req, res, next) => {
+  User.findById(req.session.user._id).then((clientDetails) => {
+    res.render("clients/client-day", clientDetails);
+  });
+});
