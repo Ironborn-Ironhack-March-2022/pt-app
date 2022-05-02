@@ -3,12 +3,6 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   { 
-    username: {
-      type: "String",
-      required: [true, "Username is required"],
-      lowercase: true,
-      trim: true,
-    },
     email: {
       type: String,
       unique: true,
@@ -16,6 +10,13 @@ const userSchema = new Schema(
       match: [/^\S+@\S+\.\S+$/, "Please use a valid email address."],
       lowercase: true,
       trim: true,
+    },
+    userName: {
+      type: "String",
+      required: [true, "Username is required"],
+      lowercase: true,
+      trim: true,
+      // unique: true
     },
     passwordHash: {
       type: String,
@@ -26,7 +27,6 @@ const userSchema = new Schema(
       enum: ["Instructor", "Client"],
       required: true
     },
-    name: String,
     instructor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Instructor",

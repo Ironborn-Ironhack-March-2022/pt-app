@@ -20,12 +20,11 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password, role} = req.body;
-  console.log(username, email, password, role)
+  const { userName, email, password, role} = req.body;
 
-  if (!username) {
+  if (!userName) {
     return res.status(400).render("auth/signup", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Please provide your userName.",
     });
   }
 
@@ -53,42 +52,47 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   */
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
-    // If the user is found, send the message username is taken
+  // Search the database for a user with the userName submitted in the form
+  User.findOne({ userName }).then((found) => {
+    // If the user is found, send the message userName is taken
     if (found) {
       return res
-        .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+      .status(400)
+      .render("auth/signup", { errorMessage: "Username already taken." });
     }
-
+    
     // if user is not found, create a new user - start with hashing the password
     return bcrypt
-      .genSalt(saltRounds)
-      .then((salt) => bcrypt.hash(password, salt))
-      .then((hashedPassword) => {
-        // Create a user and save it in the database
-        return User.create({
-          username: username,
-          email: email,
-          role: role,
-          passwordHash: hashedPassword,
-        });
+    .genSalt(saltRounds)
+    .then((salt) => bcrypt.hash(password, salt))
+    .then((hashedPassword) => {
+      // Create a user and save it in the database
+      
+      userDetails = {
+        userName: userName,
+        userName: userName,
+        email: email,
+        role: role,
+        passwordHash: hashedPassword,
+        }
+        return User.create(userDetails)
       })
       .then((user) => {
+        console.log('here.....',req.session)
         req.session.user = user;
         res.redirect("/");
       })
       .catch((error) => {
+        console.log(error)
         if (error instanceof mongoose.Error.ValidationError) {
           return res
-            .status(400)
-            .render("auth/signup", { errorMessage: error.message });
+          .status(400)
+          .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. The username you choose is already in use.",
+              "Email needs to be unique. The email you choose is already in use.",
           });
         }
         return res
@@ -103,11 +107,11 @@ router.get("/login", isLoggedOut, (req, res) => {
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
-  if (!username) {
+  if (!userName) {
     return res.status(400).render("auth/login", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Please provide your userName.",
     });
   }
 
@@ -119,8 +123,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
   }
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  // Search the database for a user with the userName submitted in the form
+  User.findOne({ userName })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
@@ -129,7 +133,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the userName, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.passwordHash).then((isSamePassword) => {
         if (!isSamePassword) {
           return res.status(400).render("auth/login", {
