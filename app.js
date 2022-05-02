@@ -30,7 +30,7 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
-const clientRoutes = require("./routes/clients.routes");
+const clientRoutes = require("./routes/client.routes");
 app.use("/client", clientRoutes);
 
 const instructorRoutes = require("./routes/instructor.routes");

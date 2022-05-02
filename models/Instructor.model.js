@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 
 const instructorSchema = new Schema(
   {
+    userName: String,
     email: {
       type: String,
       unique: true,
@@ -27,6 +28,6 @@ const instructorSchema = new Schema(
   }
 );
 
-const Instructor = model("User", instructorSchema);
+const Instructor = model("Instructor", instructorSchema);
 
 module.exports = Instructor;
