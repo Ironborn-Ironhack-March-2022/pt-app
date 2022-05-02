@@ -6,14 +6,14 @@ const exerciseSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
   },
   image: {
-    data: Buffer,
     type: String,
   },
   category: {
     type: [String],
-    enum: ["Weight", "Yoga", "Cardio", "Interval", "Dance", "Balance", "Other"],
+    enum: ["weight", "yoga", "cardio", "interval", "dance", "balance", "other"],
   },
   description: String,
   reps: {
