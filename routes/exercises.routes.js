@@ -57,4 +57,42 @@ router.post("/create", cloudinary.single("file"), (req, res, next) => {
     });
 });
 
+router.get("/:exerciseId", (req, res, next) => {
+  Exercise.findById(req.params.exerciseId)
+    .then((exeInfo) => {
+      res.render("exercises/exercise-details", exeInfo);
+    })
+    .catch((error) => {
+      console.log("could not find exercise", error);
+    });
+});
+
+router.get("/:exerciseId/edit", (req, res, next) => {
+  Exercise.findById(req.params.exerciseId)
+    .then((exeInfo) => {
+      res.render("exercises/edit-exercise", exeInfo);
+    })
+    .catch((error) => {
+      console.log("could not find exercise", error);
+    });
+});
+
+router.post("/:exerciseId/edit", (req, res, next) => {
+  const newInfo = {
+    name: req.body.name,
+    category: req.body.category,
+    description: req.body.description,
+    reps: req.body.reps,
+    sets: req.body.sets,
+  };
+
+  Exercise.findByIdAndUpdate(req.params.exerciseId, newInfo)
+    .then(() => {
+      res.redirect(`/exercises/${req.params.exerciseId}`);
+    })
+    .catch((error) => {
+      console.log("could not find exercise", error);
+    });
+});
+
 module.exports = router;

@@ -1,0 +1,49 @@
+<div>
+
+  <h2>Edit exercise: {{name}}</h2>
+
+  <form action="/exercises/{{_id}}/edit" method="POST">
+
+    <label>
+      Name:
+      <input type="text" name="name" placeholder="{{name}}" value="{{name}}" />
+    </label>
+    <label>
+      Category:
+      <input
+        type="text"
+        name="category"
+        placeholder="{{category}}"
+        value="{{category}}"
+      />
+    </label>
+    <label>Description:
+      <textarea
+        name="description"
+        cols="30"
+        rows="10"
+        placeholder="{{description}}"
+      >{{description}}</textarea>
+    </label>
+    <label>
+      Reps:
+      <input
+        type="number"
+        name="reps"
+        placeholder="{{reps}}"
+        value="{{reps}}"
+      />
+    </label>
+    <label>
+      Sets:
+      <select name="sets">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </label>
+    <button type="submit">Save Changes!</button>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+
+<h1>Welcome to your page: {{client.userName}}</h1>
+
+
+<h3>Your details:</h3>
+<ul>
+    <li>User name: {{client.userName}}</li>
+    <li>Email: {{client.email}}</li>
+
+</ul>
+<form action="/client/{{client._id}}/tasks" method="get">
+    <button>Edit your Tasks </button>
+</form>
+<br>
+<form action="/exercises/{{client._id}}/favourites" method="get">
+    <button>Edit your Favorite Exercises</button>
+</form>
+<br>
+<form action="/client/{{client._id}}/client-insturctor" method="get">
+    <button>Contact your Instructor</button>
+</form>
