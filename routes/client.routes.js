@@ -31,8 +31,9 @@ router.get("/profile", (req, res, next) => {
 });
 
 //Tasks-list
-router.get("/tasks", isLoggedIn, isClient, (req, res, next) => {
-  User.findById(req.session.user._id).then((clientDetails) => {
+router.get("/tasks", (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((clientDetails) => {
     res.render("clients/client-tasks", clientDetails);
   });
 });
@@ -43,8 +44,9 @@ router.get("/exercises", isLoggedIn, isClient, (req, res, next) => {
 });
 
 //Client-day
-router.get("/:clientid/client-day", isLoggedIn, isClient, (req, res, next) => {
-  User.findById(req.session.user._id).then((clientDetails) => {
+router.get("/client-day", isLoggedIn, isClient, (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((clientDetails) => {
     res.render("clients/client-day", clientDetails);
   });
 });
