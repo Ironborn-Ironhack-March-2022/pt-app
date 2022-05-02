@@ -1,0 +1,17 @@
+
+
+<h1>Welcome to your page: {{instructor.userName}}</h1>
+
+
+<h3>Your details:</h3>
+<ul>
+    <li>User name: {{instructor.userName}}</li>
+    <li>Email: {{instructor.email}}</li>
+    <li>Role: {{instructor.role}}</li>
+</ul>
+<form action="/instructor/{{instructor._id}}/client-list" method="get">
+    <button>Go to you client list</button>
+</form>
+<form action="/instructor/{{instructor._id}}/workouts" method="get">
+    <button>Go to workouts</button>
+</form>
