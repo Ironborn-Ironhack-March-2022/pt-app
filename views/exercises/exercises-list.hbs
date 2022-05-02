@@ -1,0 +1,11 @@
+<div>
+  <h1>List of exercises:</h1>
+  {{#each exercises}}
+    <img src="{{this.image}}" alt="image of {{this.name}}" />
+    <h3>{{this.name}}</h3>
+    <div>
+      <h4>{{this.category}}</h4>
+      <p>{{this.description}}</p>
+    </div>
+  {{/each}}
+</div>
