@@ -80,7 +80,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         console.log('here.....',req.session)
         req.session.user = user;
-        res.redirect("/");
+        if (user.role === "Client"){
+          return res.redirect('/client/profile')
+        } else {
+          return res.redirect("/instructor/profile");
+        };
       })
       .catch((error) => {
         console.log(error)
@@ -142,7 +146,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        if (user.role === "Client"){
+          return res.redirect('/client/profile')
+        } else {
+          return res.redirect("/instructor/profile");
+        }
+        
       });
     })
 
