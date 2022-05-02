@@ -3,3 +3,12 @@
 <form action="/instructor/profile" method="get">
     <button>Return to profile page</button>
 </form>
+
+{{#each clients}}
+    <ul>
+        <li>{{this.userName}}</h1>
+        <li>{{this.email}}</h1>
+        <li>{{this.role}}</h1>
+        <li>{{this.userName}}</h1>
+    </ul><br>
+{{/each}}

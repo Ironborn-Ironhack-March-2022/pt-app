@@ -54,6 +54,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Search the database for a user with the userName submitted in the form
   User.findOne({ userName }).then((found) => {
+    console.log(userName)
     // If the user is found, send the message userName is taken
     if (found) {
       return res
