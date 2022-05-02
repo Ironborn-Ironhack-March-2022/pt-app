@@ -19,6 +19,10 @@ const exerciseSchema = new Schema({
   reps: {
     type: Number,
   },
+  sets: {
+    type: Number,
+    enum: [1, 2, 3, 4, 5],
+  },
 });
 
 const Exercise = model("Exercise", exerciseSchema);
