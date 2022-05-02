@@ -2,7 +2,16 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 
 
-
+//Homepage
+router.get("/homepage", (req, res, next) => {
+    User.findById(req.session.user._id)
+    .then((instructorDetails) => {
+      res.render("instructors/instructor-homepage", { instructor: instructorDetails });
+    })
+    .catch((err) => {
+      next(err);
+    })
+  });
 
 
 

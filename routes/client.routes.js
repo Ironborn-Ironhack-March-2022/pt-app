@@ -10,8 +10,9 @@ module.exports = router;
 
 //Homepage
 router.get("/homepage", (req, res, next) => {
-  User.findById(req.session.user._id).then((clientDetails) => {
-    res.render("clients/client-homepage.hbs", { clientDetails: clientDetails });
+  User.findById(req.session.user._id)
+  .then((clientDetails) => {
+    res.render("clients/client-homepage", { client: clientDetails });
   })
   .catch((err) => {
     next(err);
@@ -22,7 +23,7 @@ router.get("/homepage", (req, res, next) => {
 router.get("/profile", (req, res, next) => {
   User.findById(req.session.user._id)
     .then((clientDetails) => {
-      res.render("clients/client-profile.hbs", { client: clientDetails });
+      res.render("clients/client-profile", { client: clientDetails });
     })
     .catch((err) => {
       next(err);

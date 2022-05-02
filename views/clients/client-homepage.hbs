@@ -1,4 +1,4 @@
-<h1>Welcome to your page: {{client.userName}}</h1>
+<h1>Welcome to your Home Page: {{client.userName}}</h1>
 
 
 <h3>Your Tasks:</h3>
@@ -12,23 +12,27 @@
 <label for="tasks">Your progress:</label>
 
 <progress id="file" max="100" value="70"> 70% </progress>
+<br>
+<br>
+<br>
 
-<form action="/client/{{this._id}}/tasks" method="get">
-    <button>Go to your Tasks </button>
+
+<form action="/client/{{client._id}}/tasks" method="get">
+    <button>Your Tasks </button>
 </form>
 <br>
-<form action="/exercises/{{this._id}}/favourites" method="get">
-    <button>Go to your Favorite Exercises</button>
+<form action="/exercises/{{client._id}}/favourites" method="get">
+    <button>Favorite Exercises</button>
 </form>
 <br>
 <form action="/exercises/" method="get">
-    <button>Go to the Exercises</button>
+    <button>All Exercises</button>
 </form>
 <br>
-<form action="/client/{{this._id}}/client-day" method="get">
-    <button>Go to your Day</button>
+<form action="/client/{{client._id}}/client-day" method="get">
+    <button>Your Day</button>
 </form>
 <br>
-<form action="/client/{{this._id}}/client-insturctor" method="get">
+<form action="/client/{{client._id}}/client-insturctor" method="get">
     <button>Contact your Instructor</button>
 </form>
