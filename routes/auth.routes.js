@@ -10,6 +10,7 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
+
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -19,7 +20,8 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password, role} = req.body;
+  console.log(username, email, password, role)
 
   if (!username) {
     return res.status(400).render("auth/signup", {
@@ -30,6 +32,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
   if (password.length < 8) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
+    });
+  }
+
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)){
+    return res.status(400).render("auth/signup", {
+      errorMessage: "Please provide a valid email.",
     });
   }
 
@@ -61,12 +69,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
-          username,
-          password: hashedPassword,
+          username: username,
+          email: email,
+          role: role,
+          passwordHash: hashedPassword,
         });
       })
       .then((user) => {
-        // Bind the user to the session object
         req.session.user = user;
         res.redirect("/");
       })
@@ -79,7 +88,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Username need to be unique. The username you choose is already in use.",
           });
         }
         return res
@@ -121,7 +130,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       }
 
       // If user is found based on the username, check if the in putted password matches the one saved in the database
-      bcrypt.compare(password, user.password).then((isSamePassword) => {
+      bcrypt.compare(password, user.passwordHash).then((isSamePassword) => {
         if (!isSamePassword) {
           return res.status(400).render("auth/login", {
             errorMessage: "Wrong credentials.",

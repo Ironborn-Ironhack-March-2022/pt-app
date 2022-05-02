@@ -16,7 +16,7 @@ const clientModel = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
-    dateOfBirth: Date,
+    // dateOfBirth: Date,
     instructor: [
       {
         type: mongoose.Schema.Types.ObjectId,
