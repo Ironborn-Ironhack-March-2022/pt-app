@@ -54,6 +54,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Search the database for a user with the userName submitted in the form
   User.findOne({ userName }).then((found) => {
+    console.log(userName)
     // If the user is found, send the message userName is taken
     if (found) {
       return res
@@ -147,9 +148,9 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         if (user.role === "Client"){
-          return res.redirect('/client/profile')
+          return res.redirect('/client/homepage')
         } else {
-          return res.redirect("/instructor/profile");
+          return res.redirect("/instructor/homepage");
         }
         
       });

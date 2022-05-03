@@ -1,0 +1,38 @@
+<h1>Your Home Page: {{client.userName}}</h1>
+
+
+<h3>Your Tasks:</h3>
+<ul>
+    <li>Task 1</li>
+    <li>Task 2</li>
+    <li>Task 3</li>
+
+</ul>
+
+<label for="tasks">Your progress:</label>
+
+<progress id="file" max="100" value="70"> 70% </progress>
+<br>
+<br>
+<br>
+
+
+<form action="/client/tasks" method="get">
+    <button>Your Tasks </button>
+</form>
+<br>
+<form action="/client/favorites" method="get">
+    <button>Favorite Exercises</button>
+</form>
+<br>
+<form action="/exercises/" method="get">
+    <button>All Exercises</button>
+</form>
+<br>
+<form action="/client/client-day" method="get">
+    <button>Your Day</button>
+</form>
+<br>
+<form action="/client/client-insturctor" method="get">
+    <button>Contact your Instructor</button>
+</form>

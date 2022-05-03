@@ -16,7 +16,7 @@ const userSchema = new Schema(
       required: [true, "Username is required"],
       lowercase: true,
       trim: true,
-      // unique: true
+      unique: true
     },
     passwordHash: {
       type: String,
@@ -29,8 +29,12 @@ const userSchema = new Schema(
     },
     instructor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Instructor",
+      ref: "User",
     },
+    clients: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    }]
   },
   {
     timestamps: true,
