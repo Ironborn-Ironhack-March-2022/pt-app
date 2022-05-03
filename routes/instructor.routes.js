@@ -1,6 +1,18 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 
+router.get("/homepage", (req, res, next) => {
+    User.findById(req.session.user._id)
+        .populate('clients')
+        .then((instructorDetails) => {
+            console.log(instructorDetails)
+            res.render("instructors/instructor-homepage.hbs", { instructor: instructorDetails })
+        })
+        .catch(err => {
+            next(err)
+        })
+});
+
 // Gets Instructor profile (using sesson id)
 router.get("/profile", (req, res, next) => {
     User.findById(req.session.user._id)
@@ -11,6 +23,32 @@ router.get("/profile", (req, res, next) => {
             next(err)
         })
 });
+
+router.get('/profile/edit', (req, res, next) => {
+    User.findById(req.session.user._id)
+        .then(instructorDetails => {
+            res.render('instructors/instructor-profile-edit.hbs', {instructor: instructorDetails})
+        })
+        .catch(err => {
+            next(err)
+        })
+})
+
+router.post('/profile/edit', (req, res, next) =>{
+    let updatedDetails = {
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+        role: req.body.role,
+    }
+    User.findByIdAndUpdate(req.session.user._id, updatedDetails)
+        .then(response => {
+            res.redirect('/instructor/profile')
+        })
+        .catch(err => {
+            next(err)
+        })
+})
 
 // Instructor's client list (gathered using param id)
 router.get("/:instructorId/client-list", (req, res, next) => {

@@ -9,6 +9,13 @@
     <li>Email: {{instructor.email}}</li>
     <li>Role: {{instructor.role}}</li>
 </ul>
+<form action="/instructor/profile/edit" method="get">
+    <button>Edit your profile</button>
+</form>
+
+
+
+
 <form action="/instructor/{{instructor._id}}/client-list" method="get">
     <button>Go to your client list</button>
 </form>
