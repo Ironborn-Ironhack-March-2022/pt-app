@@ -16,7 +16,10 @@ const exerciseSchema = new Schema({
     enum: ["weight", "yoga", "cardio", "interval", "dance", "balance", "other"],
   },
   description: String,
-  reps: Number,
+  reps: {
+    type: Number,
+    max: 15,
+  },
   sets: {
     type: Number,
     max: 5,
