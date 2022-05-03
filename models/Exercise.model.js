@@ -16,6 +16,11 @@ const exerciseSchema = new Schema({
     enum: ["weight", "yoga", "cardio", "interval", "dance", "balance", "other"],
   },
   description: String,
+  reps: Number,
+  sets: {
+    type: Number,
+    max: 5,
+  },
 });
 
 const Exercise = model("Exercise", exerciseSchema);

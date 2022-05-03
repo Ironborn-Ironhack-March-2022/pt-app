@@ -14,8 +14,8 @@
   </label>
   <label>Category:</label>
   <select id="catg" onchange="changeStatus()" name="category">
-    <option value="weight">Weight-lifting</option>
     <option value="cardio">Cardio</option>
+    <option value="weight">Weight-lifting</option>
     <option value="yoga">Yoga</option>
     <option value="interval">Interval</option>
     <option value="dance">Dance</option>
@@ -26,9 +26,41 @@
   <label>Description:
     <textarea name="description" cols="30" rows="10"></textarea>
   </label>
-
-  {{! <label>Image:</label>
-  <input type="file" id="image_input" name="file" accept="image/*" /> }}
+  <div id="repsAndSets">
+    <label id="repsAndSets">
+      Reps:
+      <select name="reps" id="repsAndSets">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="">N/A</option>
+      </select>
+    </label>
+    <label id="repsAndSets">Sets:
+      <select name="sets" id="repsAndSets">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="">N/A</option>
+      </select>
+    </label>
+  </div>
+  <label>Image:</label>
+  <input type="file" id="image_input" name="file" accept="image/*" />
 
   <button type="submit">Create!</button>
 </form>

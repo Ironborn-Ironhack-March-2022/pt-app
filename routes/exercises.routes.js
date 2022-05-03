@@ -1,22 +1,15 @@
 const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isTrainer = require("../middleware/isTrainer");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
-
-// const storage = cloudinary.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "public/images/exercises");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname);
-//   },
-// });
+s;
 
 // const upload = cloudinary({ storage: storage });
 const Exercise = require("../models/Exercise.model");
 
 //Exercises list
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   Exercise.find()
     .then((response) => {
       console.log(response);
@@ -28,7 +21,7 @@ router.get("/", (req, res, next) => {
 });
 
 //Create exercises
-router.get("/create", (req, res, next) => {
+router.get("/create", isTrainer, (req, res, next) => {
   res.render("exercises/create-exercises");
 });
 
@@ -55,7 +48,7 @@ router.post("/create", cloudinary.single("file"), (req, res, next) => {
     });
 });
 
-router.get("/:exerciseId", (req, res, next) => {
+router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
       res.render("exercises/exercise-details", exeInfo);
@@ -65,7 +58,7 @@ router.get("/:exerciseId", (req, res, next) => {
     });
 });
 
-router.get("/:exerciseId/edit", (req, res, next) => {
+router.get("/:exerciseId/edit", isTrainer, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
       res.render("exercises/edit-exercise", exeInfo);
@@ -75,7 +68,7 @@ router.get("/:exerciseId/edit", (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/edit", (req, res, next) => {
+router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
   const newInfo = {
     name: req.body.name,
     category: req.body.category,
@@ -93,7 +86,7 @@ router.post("/:exerciseId/edit", (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/delete", (req, res, next) => {
+router.post("/:exerciseId/delete", isTrainer, (req, res, next) => {
   Exercise.findByIdAndDelete(req.params.exerciseId)
     .then(() => {
       res.redirect("/exercises");
