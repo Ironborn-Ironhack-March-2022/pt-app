@@ -6,10 +6,11 @@
 <ul>
     <li>User name: {{client.userName}}</li>
     <li>Email: {{client.email}}</li>
+    
 
 </ul>
-<form action="/client/{{client._id}}/tasks" method="get">
-    <button>Edit your Tasks </button>
+<form action="/client/edit-profile" method="get">
+    <button>Edit your Profile </button>
 </form>
 <br>
 <form action="/exercises/{{client._id}}/favourites" method="get">
