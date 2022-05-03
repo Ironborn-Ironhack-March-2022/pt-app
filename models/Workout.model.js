@@ -12,7 +12,7 @@ const workoutSchema = new Schema({
     ref: "User",
   },
   // feedback: String, - MVP FIRST
-  // completed: Boolean, - MVP FIRST
+  toDo: Boolean, 
 });
 
 const Workout = model("Workout", workoutSchema);
