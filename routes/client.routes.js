@@ -20,13 +20,8 @@ router.get("/homepage", (req, res, next) => {
 //Profile // add if statement for the instructor view to add a workout
 router.get("/profile", (req, res, next) => {
   User.findById(req.session.user._id)
-<<<<<<< HEAD
       .then((clientDetails) => {
       res.render("clients/client-profile", { client: clientDetails })
-=======
-    .then((clientDetails) => {
-      res.render("clients/client-profile", { client: clientDetails });
->>>>>>> 3731c40471f6fc91d3ff45be7f5694307634c5c8
     })
     .catch((err) => {
       next(err);
@@ -47,22 +42,12 @@ router.get("/edit-profile", (req, res, next) => {
 //Workout-list
 router.get("/workout", (req, res, next) => {
   User.findById(req.session.user._id)
-<<<<<<< HEAD
   .then((clientDetails) => {
     res.render("clients/client-workouts", clientDetails)
 })
-    .catch((err) => { console.log("Error getting tasks from db", err)
+    .catch((err) => { console.log("Error getting workout from db", err)
     next(err);
   });
-=======
-    .then((clientDetails) => {
-      res.render("clients/client-tasks", clientDetails);
-    })
-    .catch((err) => {
-      console.log("Error getting tasks from db", err);
-      next(err);
-    });
->>>>>>> 3731c40471f6fc91d3ff45be7f5694307634c5c8
 });
 
 //Exercise-list
@@ -84,7 +69,6 @@ router.get("/client-day", (req, res, next) => {
     .then((clientDetails) => {
       res.render("clients/client-day", clientDetails);
     })
-<<<<<<< HEAD
     .catch((err) => { console.log("Error getting day from db", err)
     next(err);
   })
@@ -93,10 +77,3 @@ router.get("/client-day", (req, res, next) => {
 // workouts to done
 
 // completed workout
-=======
-    .catch((err) => {
-      console.log("Error getting day from db", err);
-      next(err);
-    });
-});
->>>>>>> 3731c40471f6fc91d3ff45be7f5694307634c5c8
