@@ -2,7 +2,8 @@
 
 <div>
     {{#each workout}}
-                <form action="">
+    {{#if toDo}}
+                <form action="/client/{{id}}/workouts" method="POST">
                  <h5>{{exercises.name}}</h5>
                  <img src="{{exercises.image}}" alt="image of {{exercises.name}}" />
                  <h4>{{exercises.image}}</h4>
@@ -10,7 +11,7 @@
                  <h4>{{description}}</h4> 
                  <button>Complete</button> 
                  </form>
-
+            {{/if}}
         {{/each}}
 
 </div>

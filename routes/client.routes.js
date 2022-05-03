@@ -43,7 +43,7 @@ router.get("/edit-profile", (req, res, next) => {
 
 //Workout-list - display
 router.get("/:userId/workout", (req, res, next) => {
-  Workout.find({ User: req.params.userId })
+  Workout.find({ user: req.params.userId })
   .populate("exercises")
     .then((workoutDetails) => {
       console.log(workoutDetails)
@@ -55,7 +55,18 @@ router.get("/:userId/workout", (req, res, next) => {
     });
 });
 
-//Exercise-list
+//Work-list - mark as done
+router.post("/:workoutId/workouts", (req, res,next) => {
+  Workout.findByIdAndUpdate({_id:req.params.workoutId}, {toDo : false})
+  .then((updatedWorkout) => {
+    console.log(updatedWorkout)
+    res.send("well done i'm going to bed now")
+  })
+  .catch((err) => {
+    console.log("Error updating workout", err);
+    next(err);
+  });
+})
 
 //Favourite Exercises
 router.get("/favorites", (req, res, next) => {
