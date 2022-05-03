@@ -17,7 +17,7 @@
 <br>
 
 
-<form action="/client/workout" method="get">
+<form action="/client/{{client._id}}/workout" method="get">
     <button>Your Workout </button>
 </form>
 <br>
@@ -40,4 +40,8 @@
 <br>
 <form action="/client/client-insturctor" method="get">
     <button>Contact your Instructor</button>
+</form>
+<br>
+<form action="/auth/logout" method="GET">
+    <button type="submit">Logout</button>
 </form>

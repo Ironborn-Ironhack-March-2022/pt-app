@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
+const Workout = require("../models/Workout.model")
 
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isClient = require("../middleware/isClient");
@@ -8,8 +9,10 @@ module.exports = router;
 
 //Homepage
 router.get("/homepage", (req, res, next) => {
+ 
   User.findById(req.session.user._id)
-    .then((clientDetails) => {
+    .then((clientDetails) => { 
+      console.log(clientDetails)
       res.render("clients/client-homepage", { client: clientDetails });
     })
     .catch((err) => {
@@ -39,16 +42,18 @@ router.get("/edit-profile", (req, res, next) => {
     });
 });
 
-//Workout-list
-router.get("/workout", (req, res, next) => {
-  User.findById(req.session.user._id)
-  .then((clientDetails) => {
-    res.render("clients/client-workouts", clientDetails)
-})
+//Workout-list - display 
+router.get("/:id/workout", (req, res, next) => {
+  console.log(req.params.id)
+  Workout.find({ User: req.params.id})
+  .then((workoutDetails) => {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>", workoutDetails)
+    res.render("clients/client-workouts", { workout: workoutDetails })
+    })
     .catch((err) => { console.log("Error getting workout from db", err)
     next(err);
   });
-});
+})
 
 //Exercise-list
 router.get("/exercises", isLoggedIn, isClient, (req, res, next) => {
