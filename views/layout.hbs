@@ -29,6 +29,9 @@
         <a href="/homepage">Home</a>
         <a href="/notes">Notes</a>
       </nav>
+      {{#if user}}
+        <p>You are logged in as: {{user.userName}}</p>
+      {{/if}}
     </footer>
 
     <script src="/js/script.js"></script>

@@ -2,18 +2,6 @@ const router = require("express").Router();
 const Workout = require("../models/Workout.model");
 const Exercise = require("../models/Exercise.model");
 
-//Create new workout - render form 
-router.get("/:clientId/create-new-workout", (req, res, next) => {
-  console.log(
-    "create new workout was clicked >>>>>>>>>>>>>>>>"  );
-  Exercise.find()
-    .then((exerciseDetails) => {
-      res.render("workouts/create-new-workout", {exercise: exerciseDetails });
-    })
-    .catch((err) => {
-      console.log("Error finding exercises on the DB", err);
-    });
-});
 
 
 // Create new workout - render form - COMMENTED OUT AS TRYING SOMETHING ELSE
@@ -53,5 +41,17 @@ router.get("/:clientId/create-new-workout", (req, res, next) => {
 //     });
 // });
 
+//Create new workout - render form 
+router.get("/:clientId/create-new-workout", (req, res, next) => {
+  console.log(
+    "create new workout was clicked >>>>>>>>>>>>>>>>"  );
+  Exercise.find()
+    .then((exerciseDetails) => {
+      res.render("workouts/create-new-workout", {exercise: exerciseDetails });
+    })
+    .catch((err) => {
+      console.log("Error finding exercises on the DB", err);
+    });
+});
 
 module.exports = router;

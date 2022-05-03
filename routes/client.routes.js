@@ -7,12 +7,13 @@ const isClient = require("../middleware/isClient");
 
 module.exports = router;
 
+
+
 //Homepage
-router.get("/homepage", (req, res, next) => {
+router.get("/homepage", isClient, (req, res, next) => {
  
   User.findById(req.session.user._id)
-    .then((clientDetails) => { 
-      console.log(clientDetails)
+    .then((clientDetails) => {
       res.render("clients/client-homepage", { client: clientDetails });
     })
     .catch((err) => {

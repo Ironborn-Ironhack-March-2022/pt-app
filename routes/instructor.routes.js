@@ -5,7 +5,6 @@ router.get("/homepage", (req, res, next) => {
     User.findById(req.session.user._id)
         .populate('clients')
         .then((instructorDetails) => {
-            console.log(instructorDetails)
             res.render("instructors/instructor-homepage.hbs", { instructor: instructorDetails })
         })
         .catch(err => {
@@ -24,6 +23,8 @@ router.get("/profile", (req, res, next) => {
         })
 });
 
+
+// Edit users profiles
 router.get('/profile/edit', (req, res, next) => {
     User.findById(req.session.user._id)
         .then(instructorDetails => {
@@ -34,6 +35,7 @@ router.get('/profile/edit', (req, res, next) => {
         })
 })
 
+//Makes the edit 
 router.post('/profile/edit', (req, res, next) =>{
     let updatedDetails = {
         userName: req.body.userName,
@@ -52,7 +54,7 @@ router.post('/profile/edit', (req, res, next) =>{
 
 // Instructor's client list (gathered using param id)
 router.get("/:instructorId/client-list", (req, res, next) => {
-    User.findById(req.params.instructorId)
+    User.findById(req.params.instructorId, {new: true})
         .populate('clients')
         .then((instructorDetails) => {
             res.render("instructors/clients-list.hbs", { clients: instructorDetails.clients })
@@ -68,43 +70,43 @@ router.get("/:instructorId/workouts", (req, res, next) => {
 router.post("/:instructorId/add-client", (req, res, next) => {
     User.find({ email: req.body.email })
         .then(client => {
-            User.findByIdAndUpdate(req.params.instructorId, { $addToSet: { clients: client[0]._id } })
+            User.findByIdAndUpdate(req.params.instructorId, { $addToSet: { clients: client[0]._id } }, {new: true})
                 .populate('clients')
                 .then((instructorDetails) => {
-                    res.render("instructors/instructor-profile.hbs", {
+                    res.render("instructors/instructor-homepage.hbs", {
                         instructor: instructorDetails,
                         message: "Successfully added client"
                     })
                 })
         })
-        // need to add instructor to client as well 
         .catch(err => {
             User.findById(req.params.instructorId)
                 .then(instructor => {
-                    return res.status(400).render("instructors/instructor-profile.hbs",
+                    return res.status(400).render("instructors/instructor-homepage.hbs",
                         {
                             instructor,
-                            errorMessage: "No such user"
+                            errorMessage: "Error adding user: Invalid username."
                         }
                     )
                 });
         })
-    User.findById(req.params.instructorId)
-        .then(instructor => {
-            User.findOneAndUpdate({ email: req.body.email }, { addToSet: {instructor: instructor }}, { new: true })
-                .populate('instructor')
-        })
-        .catch(err => {
-            User.findById(req.params.instructorId)
-                .then(instructor => {
-                    return res.status(400).render("instructors/instructor-profile.hbs",
-                        {
-                            instructor,
-                            errorMessage: "No such user"
-                        }
-                    )
-                });
-        })
+    // User.findById(req.params.instructorId)
+    //     .then(instructor => {
+    //         User.findOneAndUpdate({ email: req.body.email }, { $addToSet: {instructor: instructor}})
+    //             .populate('instructor')
+                
+    //     })
+    //     .catch(err => {
+    //         User.findById(req.params.instructorId)
+    //             .then(instructor => {
+    //                 return res.status(400).render("instructors/instructor-homepage.hbs",
+    //                     {
+    //                         instructor,
+    //                         errorMessage: "Error adding user: Invalid username."
+    //                     }
+    //                 )
+    //             });
+    //     })
 })
 
     module.exports = router;
