@@ -1,14 +1,14 @@
 <div>
   <div>
     <h1>Create a workout</h1>
-    <form class="workoutform" action="" method="POST">
+    <form class="workoutform" action="/workout/{{workout.userId}}/add-new-workout" method="POST">
 
     {{!-- Above needs an action target, gonna post the created form and then it needs to go too client--}}
 
       <label>Exercises:
           <ul>
-            {{#each exercise}}
-              <input type="radio" name="{{name}}" value="{{name}}">{{name}}</option>
+            {{#each workout.exercise}}
+              <input type="radio" name="exercise" value="{{this._id}}">{{this.name}}</option>
             {{/each}}
             <ul>
       </label>

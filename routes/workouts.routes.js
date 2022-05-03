@@ -43,15 +43,32 @@ const Exercise = require("../models/Exercise.model");
 
 //Create new workout - render form 
 router.get("/:clientId/create-new-workout", (req, res, next) => {
-  console.log(
-    "create new workout was clicked >>>>>>>>>>>>>>>>"  );
   Exercise.find()
     .then((exerciseDetails) => {
-      res.render("workouts/create-new-workout", {exercise: exerciseDetails });
+      const workoutData = {
+        exercise: exerciseDetails,
+        userId: req.params.clientId
+      }
+      res.render("workouts/create-new-workout", {workout:workoutData});
+      console.log(workoutData);
     })
     .catch((err) => {
       console.log("Error finding exercises on the DB", err);
     });
 });
+
+//Create new workout - process form
+router.post("/:clientId/add-new-workout", (req, res, next) => {
+  const newWorkout = {
+    exercises: req.body.exercise,
+    description: req.body.description,
+    user: req.params.clientId,
+  }
+  console.log(newWorkout);
+  Workout.create(newWorkout)
+  .then((workoutData) => {
+    res.redirect("instructor/homepage");
+  })
+})
 
 module.exports = router;
