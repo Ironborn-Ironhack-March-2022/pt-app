@@ -1,6 +1,4 @@
 const router = require("express").Router();
-
-const Client = require("../models/Client.model");
 const User = require("../models/User.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -19,10 +17,10 @@ router.get("/homepage", (req, res, next) => {
   })
 });
 
-//Profile
+//Profile // add if statement for the instructor view to add a workout
 router.get("/profile", (req, res, next) => {
   User.findById(req.session.user._id)
-    .then((clientDetails) => {
+      .then((clientDetails) => {
       res.render("clients/client-profile", { client: clientDetails })
     })
     .catch((err) => {
@@ -30,11 +28,22 @@ router.get("/profile", (req, res, next) => {
     });
 });
 
+//Edit Profile - render form
+router.get("/edit-profile", (req, res, next) => {
+  User.findById(req.session.user._id)
+      .then((clientDetails) => {
+      res.render("clients/client-profile-edit", { client: clientDetails })
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 //Tasks-list
-router.get("/tasks", (req, res, next) => {
+router.get("/workout", (req, res, next) => {
   User.findById(req.session.user._id)
   .then((clientDetails) => {
-    res.render("clients/client-tasks", clientDetails)
+    res.render("clients/client-workouts", clientDetails)
 })
     .catch((err) => { console.log("Error getting tasks from db", err)
     next(err);
@@ -65,3 +74,7 @@ router.get("/client-day", (req, res, next) => {
     next(err);
   })
 })
+
+// workouts to done
+
+// completed workout
