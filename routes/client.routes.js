@@ -44,12 +44,10 @@ router.get("/edit-profile", (req, res, next) => {
 //Workout-list - display
 router.get("/:userId/workout", (req, res, next) => {
   Workout.find({ User: req.params.userId })
+  .populate("exercises")
     .then((workoutDetails) => {
-      let userWorkout = {
-        userId: req.params.userId,
-        workout: workoutDetails,
-      };
-      res.render("clients/client-workouts", userWorkout);
+      console.log(workoutDetails)
+      res.render("clients/client-workouts", {workout:workoutDetails});
     })
     .catch((err) => {
       console.log("Error getting workout from db", err);

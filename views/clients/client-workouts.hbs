@@ -2,11 +2,13 @@
 
 <div>
     {{#each workout}}
-            <img src="{{workout.image}}" alt="image of {{workout.name}}" />
-                 <h5>{{workout.name}}</h5>
-                 <h4>{{workout.description}}</h4>
-                 <form action="">
-                     
+                <form action="">
+                 <h5>{{exercises.name}}</h5>
+                 <img src="{{exercises.image}}" alt="image of {{exercises.name}}" />
+                 <h4>{{exercises.image}}</h4>
+                 <h4>{{exercises.description}}</h4>
+                 <h4>{{description}}</h4> 
+                 <button>Complete</button> 
                  </form>
 
         {{/each}}

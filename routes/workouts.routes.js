@@ -67,7 +67,7 @@ router.post("/:clientId/add-new-workout", (req, res, next) => {
   console.log(newWorkout);
   Workout.create(newWorkout)
   .then((workoutData) => {
-    res.redirect("instructor/homepage");
+    res.redirect("/instructor/homepage");
   })
 })
 
