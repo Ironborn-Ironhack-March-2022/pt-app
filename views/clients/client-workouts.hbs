@@ -1,1 +1,16 @@
 <h2>Your Workouts</h2>
+        <a href="/workouts/add-new">Add New Workout</a>
+<div>
+    {{#each workout}}
+    <h4>{{this.description}}</h4>
+        {{#each workout.exercises}}
+            <img src="{{this.image}}" alt="image of {{this.name}}" />
+                 <h5>{{this.name}}</h5>
+                <div>
+                <a href="/exercises/{{this._id}}">More details!</a>
+                </div>
+        {{/each}}
+    <textarea type="feedback" cols="30" rows="4">{{this.feedback}}</textarea>
+    {{/each}}
+</div>
+
