@@ -10,12 +10,18 @@
     <li>Role: {{instructor.role}}</li>
 </ul>
 <form action="/instructor/{{instructor._id}}/client-list" method="get">
-    <button>Go to you client list</button>
+    <button>Go to your client list</button>
 </form>
 <form action="/instructor/{{instructor._id}}/add-client" method="post">
     <input name="email" placeholder="client email">
     <button>Add client</button>
 </form>
+{{#if message}}
+    <p>{{message}}</p>
+{{/if}}
+{{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+{{/if}}
 <form action="/instructor/{{instructor._id}}/workouts" method="get">
     <button>Go to workouts</button>
 </form>
