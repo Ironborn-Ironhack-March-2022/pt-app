@@ -3,7 +3,6 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const isTrainer = require("../middleware/isTrainer");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
-s;
 
 // const upload = cloudinary({ storage: storage });
 const Exercise = require("../models/Exercise.model");
@@ -25,28 +24,33 @@ router.get("/create", isTrainer, (req, res, next) => {
   res.render("exercises/create-exercises");
 });
 
-router.post("/create", cloudinary.single("file"), (req, res, next) => {
-  console.log(req.file);
-  if (!req.file) {
-    const error = new Error("Please upload a file");
-    error.httpStatusCode = 400;
-    return next(error);
-  }
-  const newInfo = {
-    name: req.body.name,
-    category: req.body.category,
-    description: req.body.description,
-    image: req.file.path,
-  };
+router.post(
+  "/create",
+  cloudinary.single("file"),
+  isTrainer,
+  (req, res, next) => {
+    console.log(req.file);
+    if (!req.file) {
+      const error = new Error("Please upload a file");
+      error.httpStatusCode = 400;
+      return next(error);
+    }
+    const newInfo = {
+      name: req.body.name,
+      category: req.body.category,
+      description: req.body.description,
+      image: req.file.path,
+    };
 
-  Exercise.create(newInfo)
-    .then(() => {
-      res.redirect("/exercises");
-    })
-    .catch((error) => {
-      console.log("Could not create new Exercise", error);
-    });
-});
+    Exercise.create(newInfo)
+      .then(() => {
+        res.redirect("/exercises");
+      })
+      .catch((error) => {
+        console.log("Could not create new Exercise", error);
+      });
+  }
+);
 
 router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
@@ -76,7 +80,7 @@ router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
     reps: req.body.reps,
     sets: req.body.sets,
   };
-  
+
   Exercise.findByIdAndUpdate(req.params.exerciseId, newInfo)
     .then(() => {
       res.redirect(`/exercises/${req.params.exerciseId}`);
