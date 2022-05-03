@@ -44,8 +44,6 @@ router.post("/create", cloudinary.single("file"), (req, res, next) => {
     category: req.body.category,
     description: req.body.description,
     image: req.file.path,
-    reps: req.body.reps,
-    sets: req.body.sets,
   };
 
   Exercise.create(newInfo)

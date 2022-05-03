@@ -1,15 +1,20 @@
 <div>
-<div>
-  <h1>Create a workout</h1>
-  {{#each exercise}}
-  <form action="" method="POST">
-    <input type="text" name="Exercise Name" placeholder="{{exercise.name}}"/>
-    <input type="text" name="Description" placeholder="{{description}}"/>
-    <input type="number" name="reps" value="{{exercise.reps}}"/>
-    <input type="number" name="sets" value="{{exercise.sets}}"/>
-    <button> Add to Workout</button>
-  </form>
-  {{/each}}
-</div>
+  <div>
+    <h1>Create a workout</h1>
+    <form class="workoutform" action="" method="POST">
+      <label>Exercises:
+        <select name="exercises" multiple>
+          {{#each exercise}}
+            <option value="{{_id}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </label>
+      {{!-- <input type="text" name="description" placeholder="{{description}}" /> --}}
+      <label for="">Description:
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+      </label>
+      <button> Add to Workout</button>
+    </form>
+  </div>
 
 </div>
