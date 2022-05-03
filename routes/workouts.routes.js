@@ -8,13 +8,19 @@ const Exercise = require("../models/Exercise.model");
 router.get("/:userId/create-new-workout", (req, res, next) => {
     console.log("create new workout was clicked >>>>>>>>>>>>>>>>", req.params.userId)
 Exercise.find()
-.then((exercises) => {
-    console.log(exercises)
-    res.render("workouts/create-new-workout", exercises)
+.then((exerciseDetails) => {
+    console.log(exerciseDetails)
+    res.render("workouts/create-new-workout", {exercise: exerciseDetails})
 })
 .catch((err) => {
     console.log("Error finding exercises on the DB", err)
 })
+})
+
+
+// Create new exercise - process form
+router.post("/:userId/create-new-workout", (req, res, next) => {
+    console.log("exercise added to workout")
 })
 
 module.exports = router;

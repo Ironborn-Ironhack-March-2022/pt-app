@@ -1,16 +1,28 @@
 <h2>Your Workouts</h2>
-        <a href="/workouts/add-new">Add New Workout</a>
+        <a href="/workout/{{userId}}/create-new-workout">Add New Workout</a>
 <div>
     {{#each workout}}
-    <h4>{{this.description}}</h4>
+    <h4>{{workout.description}}</h4>
         {{#each workout.exercises}}
-            <img src="{{this.image}}" alt="image of {{this.name}}" />
-                 <h5>{{this.name}}</h5>
+            <img src="{{workout.exercises.image}}" alt="image of {{workout.exercises.name}}" />
+                 <h5>{{workout.exercises.name}}</h5>
+                 <h4>{{workout.exercises.description}}</h4>
+                 <label> Reps:
+                 <h4>{{workout.exercises.reps}}</h4>
+                 </label>
+                 <label> Sets:
+                 <h4>{{workout.exercises.reps}}</h4>
+                 </label>
                 <div>
-                <a href="/exercises/{{this._id}}">More details!</a>
+                
                 </div>
         {{/each}}
+        <label>Comments:
     <textarea type="feedback" cols="30" rows="4">{{this.feedback}}</textarea>
+    </label>
     {{/each}}
 </div>
+<br>
+<br>
+<h5> Thumbs Up</h5>
 

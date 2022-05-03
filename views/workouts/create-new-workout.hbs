@@ -1,0 +1,15 @@
+<div>
+<div>
+  <h1>Create a workout</h1>
+  {{#each exercise}}
+  <form action="" method="POST">
+    <input type="text" name="Exercise Name" placeholder="{{exercise.name}}"/>
+    <input type="text" name="Description" placeholder="{{description}}"/>
+    <input type="number" name="reps" value="{{exercise.reps}}"/>
+    <input type="number" name="sets" value="{{exercise.sets}}"/>
+    <button> Add to Workout</button>
+  </form>
+  {{/each}}
+</div>
+
+</div>
