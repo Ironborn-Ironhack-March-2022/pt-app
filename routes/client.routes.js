@@ -39,7 +39,7 @@ router.get("/edit-profile", (req, res, next) => {
     });
 });
 
-//Tasks-list
+//Workout-list
 router.get("/workout", (req, res, next) => {
   User.findById(req.session.user._id)
   .then((clientDetails) => {
