@@ -83,7 +83,7 @@ router.post("/:exerciseId/edit", (req, res, next) => {
     reps: req.body.reps,
     sets: req.body.sets,
   };
-
+  
   Exercise.findByIdAndUpdate(req.params.exerciseId, newInfo)
     .then(() => {
       res.redirect(`/exercises/${req.params.exerciseId}`);

@@ -2,19 +2,22 @@
   <div>
     <h1>Create a workout</h1>
     <form class="workoutform" action="" method="POST">
+
+    {{!-- Above needs an action target, gonna post the created form and then it needs to go too client--}}
+
       <label>Exercises:
-        <select name="exercises" multiple>
-          {{#each exercise}}
-            <option value="{{_id}}">{{name}}</option>
-          {{/each}}
-        </select>
+          <ul>
+            {{#each exercise}}
+              <input type="radio" name="{{name}}" value="{{name}}">{{name}}</option>
+            {{/each}}
+            <ul>
       </label>
-      {{!-- <input type="text" name="description" placeholder="{{description}}" /> --}}
+
       <label for="">Description:
         <textarea name="description" id="" cols="30" rows="10"></textarea>
       </label>
+
       <button> Add to Workout</button>
     </form>
   </div>
-
 </div>

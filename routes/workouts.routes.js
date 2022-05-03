@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Workout = require("../models/Workout.model");
 const Exercise = require("../models/Exercise.model");
 
+
+
 // Create new workout - render form - COMMENTED OUT AS TRYING SOMETHING ELSE
 // router.get("/:userId/create-new-workout", (req, res, next) => {
 //   console.log(
@@ -40,7 +42,7 @@ const Exercise = require("../models/Exercise.model");
 // });
 
 //Create new workout - render form 
-router.get("/create-new-workout", (req, res, next) => {
+router.get("/:clientId/create-new-workout", (req, res, next) => {
   console.log(
     "create new workout was clicked >>>>>>>>>>>>>>>>"  );
   Exercise.find()
