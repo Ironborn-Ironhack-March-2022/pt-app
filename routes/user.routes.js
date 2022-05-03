@@ -8,14 +8,10 @@ const isTrainer = require("../middleware/isTrainer")
 //Homepage
 router.get("/homepage", isLoggedIn, (req, res, next) => {
     if (req.session.user.role === "Client"){
-    User.findById(req.session.user._id) 
-    .then(user =>
-    res.render("clients/client-homepage", user)
-    )} else {
-    User.findById(req.session.user._id)  
-    .then(user =>
-    res.render("instructors/client-homepage", user)  
-    )}
+    res.redirect("clients/client-homepage")
+    } else {
+    res.redirect("instructors/instructor-homepage")  
+    }
 });
 
 //Notes
