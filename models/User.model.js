@@ -30,7 +30,7 @@ const userSchema = new Schema(
     },
     instructor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Instructor",
     },
     clients: [
       {
