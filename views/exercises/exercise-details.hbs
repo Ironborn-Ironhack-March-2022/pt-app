@@ -5,4 +5,8 @@
   <p>How many reps for example: {{reps}}</p>
   <p>How many sets for example: {{sets}}</p>
   <a href="/exercises/{{_id}}/edit">Edit exercise!</a>
+
+  <form action="/exercises/{{_id}}/delete" method="POST">
+    <button>Delete Exercise</button>
+  </form>
 </div>

@@ -95,4 +95,14 @@ router.post("/:exerciseId/edit", (req, res, next) => {
     });
 });
 
+router.post("/:exerciseId/delete", (req, res, next) => {
+  Exercise.findByIdAndDelete(req.params.exerciseId)
+    .then(() => {
+      res.redirect("/exercises");
+    })
+    .catch((error) => {
+      console.log("could not delete exercise:", error);
+    });
+});
+
 module.exports = router;
