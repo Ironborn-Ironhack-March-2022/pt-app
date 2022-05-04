@@ -10,7 +10,6 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
-
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -20,7 +19,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { userName, email, password, role} = req.body;
+  const { userName, email, password, role } = req.body;
 
   if (!userName) {
     return res.status(400).render("auth/signup", {
@@ -34,7 +33,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
   }
 
-  if (!email || !/^\S+@\S+\.\S+$/.test(email)){
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Please provide a valid email.",
     });
@@ -54,45 +53,45 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Search the database for a user with the userName submitted in the form
   User.findOne({ userName }).then((found) => {
-    console.log(userName)
+    console.log(userName);
     // If the user is found, send the message userName is taken
     if (found) {
       return res
-      .status(400)
-      .render("auth/signup", { errorMessage: "Username already taken." });
+        .status(400)
+        .render("auth/signup", { errorMessage: "Username already taken." });
     }
-    
+
     // if user is not found, create a new user - start with hashing the password
     return bcrypt
-    .genSalt(saltRounds)
-    .then((salt) => bcrypt.hash(password, salt))
-    .then((hashedPassword) => {
-      // Create a user and save it in the database
-      
-      userDetails = {
-        userName: userName,
-        userName: userName,
-        email: email,
-        role: role,
-        passwordHash: hashedPassword,
-        }
-        return User.create(userDetails)
+      .genSalt(saltRounds)
+      .then((salt) => bcrypt.hash(password, salt))
+      .then((hashedPassword) => {
+        // Create a user and save it in the database
+
+        userDetails = {
+          userName: userName,
+          userName: userName,
+          email: email,
+          role: role,
+          passwordHash: hashedPassword,
+        };
+        return User.create(userDetails);
       })
       .then((user) => {
-        console.log('here.....',req.session)
+        console.log("here.....", req.session);
         req.session.user = user;
-        if (user.role === "Client"){
-          return res.redirect(`/client/homepage`)
+        if (user.role === "Client") {
+          return res.redirect(`/client/homepage`);
         } else {
           return res.redirect(`/instructor/homepage`);
-        };
+        }
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         if (error instanceof mongoose.Error.ValidationError) {
           return res
-          .status(400)
-          .render("auth/signup", { errorMessage: error.message });
+            .status(400)
+            .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
@@ -147,12 +146,11 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        if (user.role === "Client"){
-          return res.redirect(`/client/homepage`)
+        if (user.role === "Client") {
+          return res.redirect(`/client/homepage`);
         } else {
           return res.redirect(`/instructor/homepage`);
         }
-        
       });
     })
 
