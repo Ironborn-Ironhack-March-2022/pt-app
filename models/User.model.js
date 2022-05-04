@@ -22,7 +22,11 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
-    image: String,
+    image: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/coderkron/image/upload/v1651678876/pt-app/avatar-g2d383e400_1280_hojdie.png",
+    },
     role: {
       type: String,
       enum: ["instructor", "client"],
@@ -41,9 +45,9 @@ const userSchema = new Schema(
     favorites: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Exercise"
-      }
-    ]
+        ref: "Exercise",
+      },
+    ],
   },
   {
     timestamps: true,

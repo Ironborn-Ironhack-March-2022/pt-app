@@ -1,28 +1,34 @@
 <h1>Edit Your Profile {{client.userName}}</h1>
 
-<form action="/edit-profile" method="post">
-    <h4>Profile Details</h4>
-    <br>
-    <label>Username:
-        <input type="text" name="username" value="{{client.userName}}">
-    </label>
-    <label>Email:
-        <input type="text" name="email" value="{{client.userName}}">
-    </label>
-    <br>
-    <br>
-    <br>
-    <h4>Measurements</h4>
-    <br>
+<form
+  action="/clients/edit-profile"
+  method="post"
+  enctype="multipart/form-data"
+>
 
-    <label>Height cm
-        <input type="number" name="" value=" ">
-    </label>
-    <label>Weight lb
-        <input type="number" name="" value=" ">
-    </label>
-    <br>
-    <br>
-    <br>
-    <button>Submit</button>
+  <input type="file" id="image_input" name="file" accept="image/*" />
+  <h4>Profile Details</h4>
+  <br />
+  <label>Username:
+    <input type="text" name="username" value="{{client.userName}}" />
+  </label>
+  <label>Email:
+    <input type="text" name="email" value="{{client.userName}}" />
+  </label>
+  <br />
+  <br />
+  <br />
+  <h4>Measurements</h4>
+  <br />
+
+  <label>Height cm
+    <input type="number" name="" value=" " />
+  </label>
+  <label>Weight lb
+    <input type="number" name="" value=" " />
+  </label>
+  <br />
+  <br />
+  <br />
+  <button>Submit</button>
 </form>
