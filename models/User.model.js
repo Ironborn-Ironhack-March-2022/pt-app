@@ -38,6 +38,12 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Exercise"
+      }
+    ]
   },
   {
     timestamps: true,
