@@ -46,7 +46,6 @@ router.get("/:userId/workout", (req, res, next) => {
   Workout.find({ user: req.params.userId })
   .populate("exercises")
     .then((workoutDetails) => {
-      console.log(workoutDetails)
       res.render("clients/client-workouts", {workout:workoutDetails});
     })
     .catch((err) => {
@@ -56,11 +55,16 @@ router.get("/:userId/workout", (req, res, next) => {
 });
 
 //Work-list - mark as done
-router.post("/:workoutId/workouts", (req, res,next) => {
-  Workout.findByIdAndUpdate({_id:req.params.workoutId}, {toDo : false})
+router.post("/:workoutId/complete-workout", (req, res,next) => {
+  Workout.findByIdAndUpdate({_id:req.params.workoutId}, {toDo : false}, {new: true})
   .then((updatedWorkout) => {
-    console.log(updatedWorkout)
-    res.send("well done i'm going to bed now")
+    Workout.find({user: req.session.user._id})
+    .populate('exercises')
+    .then(workoutArray => {
+      res.render("clients/client-workouts", {workout: workoutArray})
+    })
+
+    
   })
   .catch((err) => {
     console.log("Error updating workout", err);

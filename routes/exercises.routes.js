@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isClient = require("../middleware/isClient");
 const isTrainer = require("../middleware/isTrainer");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");

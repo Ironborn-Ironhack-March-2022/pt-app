@@ -71,4 +71,16 @@ router.post("/:clientId/add-new-workout", (req, res, next) => {
   })
 })
 
+router.get('/:clientId/view-workout', (req, res, next) => {
+  let user = req.params.clientId
+  console.log(user)
+  Workout.find({user: user})
+    .populate("exercises")
+    .then(workouts => {
+      console.log(user)
+      console.log(workouts)
+      res.render('workouts/workout-list.hbs', {workouts: workouts})
+    })
+})
+
 module.exports = router;

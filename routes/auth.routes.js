@@ -148,7 +148,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         if (user.role === "Client"){
-          return res.redirect(`/client/homepage`)
+          return res.redirect(`/clients/homepage`)
         } else {
           return res.redirect(`/instructor/homepage`);
         }

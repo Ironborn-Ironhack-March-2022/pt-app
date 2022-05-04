@@ -1,0 +1,23 @@
+<div>
+
+    <h2>Workouts To-do:</h2>
+    {{#each workouts}}
+    {{#if toDo}}
+        <h3>{{exercises.name}}</h3>
+        <img src="{{exercises.image}}" alt="image of {{exercises.name}}" /><br>
+        <p><strong>Instructors comments:</strong>{{description}}</p>
+    {{/if}}
+    {{/each}}
+    
+
+    <h1>Completed Workouts:</h1>
+    {{#each workouts}}
+    {{#unless toDo}}
+
+        <h4>{{exercises.name}}</h5>
+    {{/unless}}
+    {{/each}}
+    <form action="/instructor/homepage" method="get">
+        <button>Return to homepage</button>
+    </form>
+</div>
