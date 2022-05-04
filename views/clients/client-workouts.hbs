@@ -1,21 +1,34 @@
-<h2>Your Workouts</h2>
+<h1>Your Workouts</h1>
+
 
 <div>
+
+    <h2>Workouts To-do:</h2>
     {{#each workout}}
     {{#if toDo}}
-                <form action="/client/{{id}}/workouts" method="POST">
-                 <h5>{{exercises.name}}</h5>
-                 <img src="{{exercises.image}}" alt="image of {{exercises.name}}" />
-                 <h4>{{exercises.image}}</h4>
-                 <h4>{{exercises.description}}</h4>
-                 <h4>{{description}}</h4> 
-                 <button>Complete</button> 
-                 </form>
-            {{/if}}
-        {{/each}}
+    <form action="/clients/{{id}}/complete-workout" method="POST">
+        <h3>{{exercises.name}}</h3>
+        <img src="{{exercises.image}}" alt="image of {{exercises.name}}" />
+        <p><strong>Description:</strong> {{exercises.description}}</p>
+        <p><strong>Instructors comments:</strong> {{description}}</p>
+        <button>Complete</button>
+    </form>
+    
+    {{/if}}
+    {{/each}}
+    
 
+    <h1>Completed Workouts:</h1>
+    {{#each workout}}
+    {{#unless toDo}}
+
+        <h4>{{exercises.name}}</h4>
+        <p>Instructor's comments: {{description}}</p>
+    {{/unless}}
+    {{/each}}
+
+    <form action="/clients/homepage" method="get">
+        <button>Return to homepage</button>
+    </form>
 </div>
 <br>
-<br>
-<h5> Thumbs Up</h5>
-

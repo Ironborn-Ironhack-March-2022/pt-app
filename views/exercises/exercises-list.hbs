@@ -1,4 +1,31 @@
+<script>
+
+</script>
+
 <div>
+  <div>
+    <h3>Search exercise:</h3>
+    <form action="/exercises" method="GET">
+      <label for="">
+        Search by name:
+        <input type="text" name="name" placeholder="Search by name" />
+      </label>
+      <label>
+        or:
+        <select name="category">
+          <option value="">Select Category</option>
+          <option value="weight">Weight-lifting</option>
+          <option value="cardio">Cardio</option>
+          <option value="yoga">Yoga</option>
+          <option value="interval">Interval</option>
+          <option value="dance">Dance</option>
+          <option value="balance">Balance</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <button type="submit">Search</button>
+    </form>
+  </div>
   <h1>List of exercises:</h1>
   {{#each exercises}}
     <img src="{{this.image}}" alt="image of {{this.name}}" />
