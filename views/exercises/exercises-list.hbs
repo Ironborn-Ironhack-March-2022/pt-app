@@ -6,6 +6,9 @@
     <div>
       <a href="/exercises/{{this._id}}">More details!</a>
     </div>
+    <form action="/exercises/favorites/{{this._id}}"method="POST">
+    <button>Add to favorites </button>
+    </form>
   {{/each}}
   <a href="/exercises/create">Create exercise!</a>
 </div>
