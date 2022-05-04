@@ -9,9 +9,27 @@ const Exercise = require("../models/Exercise.model");
 
 //Exercises list
 router.get("/", isLoggedIn, (req, res, next) => {
-  Exercise.find()
+  let filter;
+  console.log(req.query.category);
+  console.log(req.query.name);
+  const categorySearch = req.query.category;
+  const nameSearch = req.query.name;
+  if (nameSearch === undefined && categorySearch === undefined) {
+    filter = {};
+  } else if (nameSearch === "" && categorySearch === "") {
+    filter = {};
+  } else if (nameSearch !== "" && categorySearch === "") {
+    filter = { name: nameSearch };
+  } else if (nameSearch === "" && categorySearch !== "") {
+    filter = { category: categorySearch };
+  } else if (nameSearch !== "" && categorySearch !== "") {
+    filter = {
+      name: nameSearch,
+      category: categorySearch,
+    };
+  }
+  Exercise.find(filter)
     .then((response) => {
-      console.log(response);
       res.render("exercises/exercises-list", { exercises: response });
     })
     .catch((error) => {
