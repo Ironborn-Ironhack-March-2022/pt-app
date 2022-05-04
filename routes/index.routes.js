@@ -14,4 +14,13 @@ router.get("/homepage", isLoggedIn, (req, res, next) => {
   }
 });
 
+router.get("/workout", isLoggedIn, (req, res, next) => {
+  const userId = req.session.user._id
+  if (req.session.user.role === "Client") {
+    return res.redirect(`/clients/${userId}/workout`);
+  } else if (req.session.user.role === "Instructor") {
+    return res.redirect(`/instructor/${userId}/workouts`);
+  }
+});
+
 module.exports = router;
