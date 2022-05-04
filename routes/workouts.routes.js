@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/Workout.model");
 const Exercise = require("../models/Exercise.model");
+const isClient = require("../middleware/isClient")
 
 // Create new workout - render form - COMMENTED OUT AS TRYING SOMETHING ELSE
 // router.get("/:userId/create-new-workout", (req, res, next) => {
@@ -40,7 +41,7 @@ const Exercise = require("../models/Exercise.model");
 // });
 
 //Create new workout - render form
-router.get("/:clientId/create-new-workout", (req, res, next) => {
+router.get("/:clientId/create-new-workout", isClient, (req, res, next) => {
   Exercise.find()
     .then((exerciseDetails) => {
       const workoutData = {
@@ -56,7 +57,7 @@ router.get("/:clientId/create-new-workout", (req, res, next) => {
 });
 
 //Create new workout - process form
-router.post("/:clientId/add-new-workout", (req, res, next) => {
+router.post("/:clientId/add-new-workout", isClient, (req, res, next) => {
   const newWorkout = {
     exercises: req.body.exercise,
     description: req.body.description,
@@ -68,7 +69,7 @@ router.post("/:clientId/add-new-workout", (req, res, next) => {
   });
 });
 
-router.get('/:clientId/view-workout', (req, res, next) => {
+router.get('/:clientId/view-workout', isClient, (req, res, next) => {
   let user = req.params.clientId
   console.log(user)
   Workout.find({user: user})

@@ -4,7 +4,15 @@ const Workout = require("../models/Workout.model");
 const path = require("path");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isClient = require("../middleware/isClient");
+<<<<<<< HEAD
 const cloudinary = require("../config/cloudinary.config");
+=======
+const messages  = [
+  "You must be an Instructor to view instructor pages, redirected to client homepage"
+]
+
+
+>>>>>>> d3bd01d987c25a0a255114bc6c92209be34f3719
 module.exports = router;
 
 //Homepage
@@ -12,7 +20,10 @@ router.get("/homepage", (req, res, next) => {
   User.findById(req.session.user._id)
     .then((clientDetails) => {
       console.log(clientDetails);
-      res.render("clients/client-homepage", { client: clientDetails });
+      res.render("clients/client-homepage", {
+        client: clientDetails,
+        msg: messages[req.query.msg]
+      });
     })
     .catch((err) => {
       next(err);
