@@ -31,7 +31,7 @@ const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
 const clientRoutes = require("./routes/client.routes");
-app.use("/clients", clientRoutes);
+app.use("/client", clientRoutes);
 
 const instructorRoutes = require("./routes/instructor.routes");
 app.use("/instructor", instructorRoutes);

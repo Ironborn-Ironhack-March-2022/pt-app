@@ -6,7 +6,7 @@
     <h2>Workouts To-do:</h2>
     {{#each workout}}
     {{#if toDo}}
-    <form action="/clients/{{id}}/complete-workout" method="POST">
+    <form action="/client/{{id}}/complete-workout" method="POST">
         <h3>{{exercises.name}}</h3>
         <img src="{{exercises.image}}" alt="image of {{exercises.name}}" />
         <p><strong>Description:</strong> {{exercises.description}}</p>
@@ -27,7 +27,7 @@
     {{/unless}}
     {{/each}}
 
-    <form action="/clients/homepage" method="get">
+    <form action="/client/homepage" method="get">
         <button>Return to homepage</button>
     </form>
 </div>
