@@ -40,26 +40,28 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 //Create exercises
-router.get("/create", isTrainer, (req, res, next) => {
+router.get("/create", isClient, (req, res, next) => {
   res.render("exercises/create-exercises");
 });
 
 router.post(
   "/create",
   cloudinary.single("file"),
-  isTrainer,
+  isClient,
   (req, res, next) => {
-    console.log(req.file);
-    if (!req.file) {
-      const error = new Error("Please upload a file");
-      error.httpStatusCode = 400;
-      return next(error);
+    let imageInfo;
+    if (req.file === undefined) {
+      imageInfo =
+        "https://res.cloudinary.com/coderkron/image/upload/v1651679344/pt-app/image-placeholder-icon-6_ta05wg.png";
+    } else {
+      imageInfo = req.file.path;
     }
+    console.log(req.file);
     const newInfo = {
       name: req.body.name,
       category: req.body.category,
       description: req.body.description,
-      image: req.file.path,
+      image: imageInfo,
     };
 
     Exercise.create(newInfo)
@@ -82,7 +84,7 @@ router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.get("/:exerciseId/edit", isTrainer, (req, res, next) => {
+router.get("/:exerciseId/edit", isClient, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
       res.render("exercises/edit-exercise", exeInfo);
@@ -92,7 +94,7 @@ router.get("/:exerciseId/edit", isTrainer, (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
+router.post("/:exerciseId/edit", isClient, (req, res, next) => {
   const newInfo = {
     name: req.body.name,
     category: req.body.category,
@@ -110,7 +112,7 @@ router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/delete", isTrainer, (req, res, next) => {
+router.post("/:exerciseId/delete", isClient, (req, res, next) => {
   Exercise.findByIdAndDelete(req.params.exerciseId)
     .then(() => {
       res.redirect("/exercises");
@@ -122,26 +124,16 @@ router.post("/:exerciseId/delete", isTrainer, (req, res, next) => {
 
 //Add Exercise to Favorites
 router.post("/favorites/:exerciseId", (req, res, next) => {
-  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.exerciseId}})
-  .then(() => {
-    res.redirect("/exercises")
+  User.findByIdAndUpdate(req.session.user._id, {
+    $push: { favorites: req.params.exerciseId },
   })
-  .catch(err => {
-    console.log("There was an error adding to favorites", err)
-    next(err)
-  })
-})
-
-//Remove Exercise from Favorites
-router.post("/favorites/:exerciseId/remove", (req, res, next) => {
-  User.findByIdAndUpdate(req.session.user._id, {$pull: {favorites: req.params.exerciseId}})
-  .then(() => {
-    res.redirect("/user/favorites")
-  })
-  .catch(err => {
-    console.log("There was an error removing from favorites", err)
-    next(err)
-  })
-})
+    .then(() => {
+      res.redirect("/exercises");
+    })
+    .catch((err) => {
+      console.log("There was an error added to favorites", err);
+      next(err);
+    });
+});
 
 module.exports = router;

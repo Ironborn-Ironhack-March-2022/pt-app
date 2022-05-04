@@ -10,6 +10,8 @@ const exerciseSchema = new Schema({
   },
   image: {
     type: String,
+    default:
+      "https://res.cloudinary.com/coderkron/image/upload/v1651679344/pt-app/image-placeholder-icon-6_ta05wg.png",
   },
   category: {
     type: [String],
