@@ -108,7 +108,19 @@ router.post("/favorites/:exerciseId", (req, res, next) => {
     res.redirect("/exercises")
   })
   .catch(err => {
-    console.log("There was an error added to favorites", err)
+    console.log("There was an error adding to favorites", err)
+    next(err)
+  })
+})
+
+//Remove Exercise from Favorites
+router.post("/favorites/:exerciseId/remove", (req, res, next) => {
+  User.findByIdAndUpdate(req.session.user._id, {$pull: {favorites: req.params.exerciseId}})
+  .then(() => {
+    res.redirect("/user/favorites")
+  })
+  .catch(err => {
+    console.log("There was an error removing from favorites", err)
     next(err)
   })
 })
