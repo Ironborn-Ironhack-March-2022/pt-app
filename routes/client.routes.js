@@ -4,6 +4,10 @@ const Workout = require("../models/Workout.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isClient = require("../middleware/isClient");
+const messages  = [
+  "You must be an Instructor to view instructor pages, redirected to client homepage"
+]
+
 
 module.exports = router;
 
@@ -12,7 +16,10 @@ router.get("/homepage", (req, res, next) => {
   User.findById(req.session.user._id)
     .then((clientDetails) => {
       console.log(clientDetails);
-      res.render("clients/client-homepage", { client: clientDetails });
+      res.render("clients/client-homepage", {
+        client: clientDetails,
+        msg: messages[req.query.msg]
+      });
     })
     .catch((err) => {
       next(err);

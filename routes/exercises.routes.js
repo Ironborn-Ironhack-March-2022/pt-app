@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isClient = require("../middleware/isClient");
-const isTrainer = require("../middleware/isTrainer");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
 const User = require("../models/User.model");
@@ -40,14 +39,14 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 //Create exercises
-router.get("/create", isTrainer, (req, res, next) => {
+router.get("/create", isClient, (req, res, next) => {
   res.render("exercises/create-exercises");
 });
 
 router.post(
   "/create",
   cloudinary.single("file"),
-  isTrainer,
+  isClient,
   (req, res, next) => {
     console.log(req.file);
     if (!req.file) {
@@ -82,7 +81,7 @@ router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.get("/:exerciseId/edit", isTrainer, (req, res, next) => {
+router.get("/:exerciseId/edit", isClient, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
       res.render("exercises/edit-exercise", exeInfo);
@@ -92,7 +91,7 @@ router.get("/:exerciseId/edit", isTrainer, (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
+router.post("/:exerciseId/edit", isClient, (req, res, next) => {
   const newInfo = {
     name: req.body.name,
     category: req.body.category,
@@ -110,7 +109,7 @@ router.post("/:exerciseId/edit", isTrainer, (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/delete", isTrainer, (req, res, next) => {
+router.post("/:exerciseId/delete", isClient, (req, res, next) => {
   Exercise.findByIdAndDelete(req.params.exerciseId)
     .then(() => {
       res.redirect("/exercises");

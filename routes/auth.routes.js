@@ -81,7 +81,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         console.log("here.....", req.session);
         req.session.user = user;
         if (user.role === "Client") {
-          return res.redirect(`/client/homepage`);
+          return res.redirect(`/clients/homepage`);
         } else {
           return res.redirect(`/instructor/homepage`);
         }

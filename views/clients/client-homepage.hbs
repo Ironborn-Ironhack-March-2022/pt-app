@@ -1,4 +1,12 @@
-<h1>Your Home Page: {{client.userName}}</h1>
+
+{{#if msg}}
+<div>
+    <h5 style="color: red">{{msg}}</h5>
+</div>
+
+{{/if}}
+<h3>Your Home Page: {{client.userName}}</h3>
+
 
 {{!
 <h3>Your Tasks:</h3>
