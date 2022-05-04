@@ -5,8 +5,6 @@
   method="post"
   enctype="multipart/form-data"
 >
-
-  <input type="file" id="image_input" name="file" accept="image/*" />
   <h4>Profile Details</h4>
   <br />
   <label>Username:
@@ -14,6 +12,9 @@
   </label>
   <label>Email:
     <input type="text" name="email" value="{{client.userName}}" />
+  </label>
+  <label>Edit profile picture:
+    <input type="file" id="image_input" name="file" accept="image/*" />
   </label>
   <br />
   <br />

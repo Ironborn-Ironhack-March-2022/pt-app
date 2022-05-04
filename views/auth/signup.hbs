@@ -1,23 +1,26 @@
 <form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="userName">
-   </label>
-    <label> Email
-      <input type="email" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-   <label>Role:
-      <select name="role">
-         <option value="Instructor">Instructor</option>
-         <option value="Client">Client</option>
-      </select>
-   </label>
-  
-   <button type="submit">Submit</button>
+  <label>
+    Username
+    <input type="text" name="userName" />
+  </label>
+  <label>
+    Email
+    <input type="email" name="email" />
+  </label>
+  <label>
+    Password
+    <input type="password" name="password" />
+  </label>
+  <label>Role:
+    <select name="role">
+      <option value="instructor">Instructor</option>
+      <option value="client">Client</option>
+    </select>
+  </label>
+
+  <button type="submit">Submit</button>
 </form>
 
 {{#if errorMessage}}
-   {{errorMessage}}
+  {{errorMessage}}
 {{/if}}

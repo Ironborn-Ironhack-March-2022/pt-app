@@ -1,61 +1,60 @@
 <h1>Your Home Page: {{instructor.userName}}</h1>
 
 <form action="/instructor/profile" method="get">
-    <button>Your Profile </button>
+  <button>Your Profile </button>
 </form>
 
 <h3>Your Clients:</h3>
 {{#each instructor.clients}}
 
-<ul>
+  <ul>
     <li>{{userName}}</li>
     <ul>
-        {{!-- /* Change with the correct address to this page */ --}}
+      {{! /* Change with the correct address to this page */ }}
 
-        <form action="/workout/{{id}}/view-workout" method="get"> 
-            <button>Check workouts</button>
-        </form>
+      <form action="/workout/{{id}}/view-workout" method="get">
+        <button>Check workouts</button>
+      </form>
 
-        <form action="/workout/{{id}}/create-new-workout" method="get">
-            <button>Add new workouts</button>
-        </form>
+      <form action="/workout/{{id}}/create-new-workout" method="get">
+        <button>Add new workouts</button>
+      </form>
 
     </ul>
-</ul>
+  </ul>
 {{/each}}
-<form action="/instructor/{{instructor._id}}/add-client" method="post">Add Client
-    <input name="email" placeholder="client email">
-    <button>Submit</button>
+<form action="/instructor/{{instructor._id}}/add-client" method="post">Add
+  Client
+  <input name="email" placeholder="client email" />
+  <button>Submit</button>
 </form>
 {{#if message}}
-    <p>{{message}}</p>
+  <p>{{message}}</p>
 {{/if}}
 {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
+  <p>{{errorMessage}}</p>
 {{/if}}
 
-
-<form action="/instructor/exercises" method="get">
-    <button>Your Exercises </button>
+<form action="/exercises" method="get">
+  <button>All Exercises </button>
 </form>
-<br>
+<br />
 <form action="/user/favorites" method="get">
-    <button>Favorite Exercises</button>
+  <button>Favorite Exercises</button>
 </form>
-<br>
+<br />
 <form action="/exercises/" method="get">
-    <button>All Exercises</button>
+  <button>All Exercises</button>
 </form>
-<br>
+<br />
 <form action="/client/client-day" method="get">
-    <button>Your Day</button>
+  <button>Your Day</button>
 </form>
-<br>
+<br />
 <form action="/instructor/{{instructor._id}}/workouts" method="get">
-    <button>Go to workouts</button>
+  <button>Go to workouts</button>
 </form>
 
 <form action="/auth/logout" method="GET">
-    <button type="submit">Logout</button>
+  <button type="submit">Logout</button>
 </form>
-

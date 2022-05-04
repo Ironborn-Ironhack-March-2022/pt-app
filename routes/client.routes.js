@@ -2,10 +2,12 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const Workout = require("../models/Workout.model");
 const path = require("path");
+const cloudinary = require("../config/cloudinary.config");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isClient = require("../middleware/isClient");
-const cloudinary = require("../config/cloudinary.config");
-module.exports = router;
+const messages = [
+  "You must be an Instructor to view instructor pages, redirected to client homepage",
+];
 
 //Homepage
 router.get("/homepage", (req, res, next) => {
@@ -14,7 +16,7 @@ router.get("/homepage", (req, res, next) => {
       console.log(clientDetails);
       res.render("clients/client-homepage", {
         client: clientDetails,
-        msg: messages[req.query.msg]
+        msg: messages[req.query.msg],
       });
     })
     .catch((err) => {
@@ -121,3 +123,5 @@ router.get("/client-day", (req, res, next) => {
 // workouts to done
 
 // completed workout
+
+module.exports = router;

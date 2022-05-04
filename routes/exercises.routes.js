@@ -73,6 +73,7 @@ router.post(
   }
 );
 
+//Exercise details
 router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
@@ -82,7 +83,7 @@ router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
       console.log("could not find exercise", error);
     });
 });
-
+//Edit exercise details
 router.get("/:exerciseId/edit", isClient, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
@@ -111,6 +112,7 @@ router.post("/:exerciseId/edit", isClient, (req, res, next) => {
     });
 });
 
+//delete Exercises
 router.post("/:exerciseId/delete", isClient, (req, res, next) => {
   Exercise.findByIdAndDelete(req.params.exerciseId)
     .then(() => {

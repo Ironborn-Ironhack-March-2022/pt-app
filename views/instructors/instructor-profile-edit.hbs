@@ -1,25 +1,33 @@
+<form
+  action="/instructor/profile/edit"
+  method="POST"
+  enctype="multipart/form-data"
+>
 
-
-<form action="/instructor/profile/edit" method="POST">
-   <label> Username
-      <input type="text" name="userName" value="{{instructor.userName}}">
-   </label>
-    <label> Email
-      <input type="email" name="email" value="{{instructor.email}}">
-   </label>
-   <label> Password
-      <input type="password" name="password" value="{{instructor.password}}">
-   </label>
-   <label>Role:
-      <select name="role">
-         <option value="Instructor">Instructor</option>
-         <option value="Client">Client</option>
-      </select>
-   </label>
-  
-   <button type="submit">Submit</button>
+  <label>
+    Edit Username:
+    <input type="text" name="userName" value="{{instructor.userName}}" />
+  </label>
+  <label>
+    Edit Email:
+    <input type="email" name="email" value="{{instructor.email}}" />
+  </label>
+  <label>
+    Password
+    <input type="password" name="password" value="{{instructor.password}}" />
+  </label>
+  <label>Role:
+    <select name="role">
+      <option value="Instructor">Instructor</option>
+      <option value="Client">Client</option>
+    </select>
+  </label>
+  <label>Edit profile picture:
+    <input type="file" id="image_input" name="file" accept="image/*" />
+  </label>
+  <button type="submit">Submit</button>
 </form>
 
 {{#if errorMessage}}
-   {{errorMessage}}
+  {{errorMessage}}
 {{/if}}
