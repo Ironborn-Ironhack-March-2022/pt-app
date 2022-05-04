@@ -16,28 +16,28 @@
 <br>
 <br> }}
 
-<form action="/client/{{client._id}}/workout" method="get">
+<form action="/clients/{{client._id}}/workout" method="get">
     <button>Your Workout </button>
 </form>
 <br />
-{{! <form action="/client/favorites" method="get">
+<form action="/user/favorites" method="get">
     <button>Favorite Exercises</button>
 </form>
-<br> }}
+<br>
 <form action="/exercises/" method="get">
     <button>All Exercises</button>
 </form>
 {{! <br>
 <form action="/client/client-day" method="get">
     <button>Your Day</button>
-</form> }}
-<br />
-<form action="/client/profile" method="get">
+</form> --}}
+<br>
+<form action="/clients/profile" method="get">
     <button>Your Profile</button>
 </form>
 
-<br />
-<form action="/client/{{client._id}}/client-instructor" method="get">
+<br>
+<form action="/clients/{{client._id}}/client-instructor" method="get">
     <button>Contact your Instructor</button>
 </form>
 <br />

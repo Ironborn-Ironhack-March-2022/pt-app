@@ -1,5 +1,7 @@
 body {
-  padding: 50px;
+  margin: 0;
+  width: 50%;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,6 +11,10 @@ a {
 
 h1 {
   color: 15px;
+}
+
+img{
+  width: 30%
 }
 
 .workoutform {

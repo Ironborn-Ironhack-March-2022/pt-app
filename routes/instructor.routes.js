@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
+const isClient = require("../middleware/isClient")
 
-router.get("/homepage", (req, res, next) => {
+router.get("/homepage", isClient, (req, res, next) => {
     User.findById(req.session.user._id)
         .populate('clients')
         .then((instructorDetails) => {
@@ -13,7 +14,7 @@ router.get("/homepage", (req, res, next) => {
 });
 
 // Gets Instructor profile (using sesson id)
-router.get("/profile", (req, res, next) => {
+router.get("/profile", isClient, (req, res, next) => {
     User.findById(req.session.user._id)
         .then((instructorDetails) => {
             res.render("instructors/instructor-profile.hbs", { instructor: instructorDetails })
@@ -25,7 +26,7 @@ router.get("/profile", (req, res, next) => {
 
 
 // Edit users profiles
-router.get('/profile/edit', (req, res, next) => {
+router.get('/profile/edit', isClient, (req, res, next) => {
     User.findById(req.session.user._id)
         .then(instructorDetails => {
             res.render('instructors/instructor-profile-edit.hbs', {instructor: instructorDetails})
@@ -36,7 +37,7 @@ router.get('/profile/edit', (req, res, next) => {
 })
 
 //Makes the edit 
-router.post('/profile/edit', (req, res, next) =>{
+router.post('/profile/edit', isClient, (req, res, next) =>{
     let updatedDetails = {
         userName: req.body.userName,
         email: req.body.email,
@@ -53,7 +54,7 @@ router.post('/profile/edit', (req, res, next) =>{
 })
 
 // Instructor's client list (gathered using param id)
-router.get("/:instructorId/client-list", (req, res, next) => {
+router.get("/:instructorId/client-list", isClient, (req, res, next) => {
     User.findById(req.params.instructorId, {new: true})
         .populate('clients')
         .then((instructorDetails) => {
@@ -62,12 +63,12 @@ router.get("/:instructorId/client-list", (req, res, next) => {
 })
 
 //Workouts
-router.get("/:instructorId/workouts", (req, res, next) => {
+router.get("/:instructorId/workouts", isClient, (req, res, next) => {
     res.render("instructors/instructor-workout.hbs")
 })
 
 //Add's client to instructors database and vice versa
-router.post("/:instructorId/add-client", (req, res, next) => {
+router.post("/:instructorId/add-client", isClient, (req, res, next) => {
     User.find({ email: req.body.email })
         .then(client => {
             User.findByIdAndUpdate(req.params.instructorId, { $addToSet: { clients: client[0]._id } }, {new: true})
@@ -90,23 +91,7 @@ router.post("/:instructorId/add-client", (req, res, next) => {
                     )
                 });
         })
-    // User.findById(req.params.instructorId)
-    //     .then(instructor => {
-    //         User.findOneAndUpdate({ email: req.body.email }, { $addToSet: {instructor: instructor}})
-    //             .populate('instructor')
-                
-    //     })
-    //     .catch(err => {
-    //         User.findById(req.params.instructorId)
-    //             .then(instructor => {
-    //                 return res.status(400).render("instructors/instructor-homepage.hbs",
-    //                     {
-    //                         instructor,
-    //                         errorMessage: "Error adding user: Invalid username."
-    //                     }
-    //                 )
-    //             });
-    //     })
+
 })
 
     module.exports = router;

@@ -3,22 +3,22 @@ const User = require("../models/User.model");
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const isTrainer = require("../middleware/isTrainer")
+const isTrainer = require("../middleware/isTrainer");
+const { route } = require("./workouts.routes");
 
-//Homepage
-router.get("/homepage", isLoggedIn, (req, res, next) => {
-    if (req.session.user.role === "Client"){
-    res.redirect("clients/client-homepage")
-    } else {
-    res.redirect("instructors/instructor-homepage")  
-    }
-});
 
-//Notes
-router.get("/notes", isLoggedIn, (req, res, next) => {});
-
-//Tasks/workout
-router.get("/tasks", isLoggedIn, (req, res, next) => {});
+//display favourites-list
+router.get("/favorites", isLoggedIn, (req, res,next) => {
+    User.findById(req.session.user._id)
+    .populate("favorites")
+    .then(userDetails => {
+        console.log(userDetails.favorites);
+        res.render("exercises/exercises-favorites", {user: userDetails.favorites});
+    })
+    .catch(err => {console.log("error getting favorites for db", err)
+next(err)
+})
+})
 
 
 

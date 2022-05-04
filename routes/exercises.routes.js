@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isClient = require("../middleware/isClient");
 const isTrainer = require("../middleware/isTrainer");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
+const User = require("../models/User.model");
 
 // const upload = cloudinary({ storage: storage });
 const Exercise = require("../models/Exercise.model");
@@ -117,5 +119,17 @@ router.post("/:exerciseId/delete", isTrainer, (req, res, next) => {
       console.log("could not delete exercise:", error);
     });
 });
+
+//Add Exercise to Favorites
+router.post("/favorites/:exerciseId", (req, res, next) => {
+  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.exerciseId}})
+  .then(() => {
+    res.redirect("/exercises")
+  })
+  .catch(err => {
+    console.log("There was an error added to favorites", err)
+    next(err)
+  })
+})
 
 module.exports = router;
