@@ -39,7 +39,9 @@
     <button>Your Exercises </button>
 </form>
 <br>
-
+<form action="/user/favorites" method="get">
+    <button>Favorite Exercises</button>
+</form>
 <br>
 <form action="/exercises/" method="get">
     <button>All Exercises</button>
@@ -52,6 +54,7 @@
 <form action="/instructor/{{instructor._id}}/workouts" method="get">
     <button>Go to workouts</button>
 </form>
+
 <form action="/auth/logout" method="GET">
     <button type="submit">Logout</button>
 </form>

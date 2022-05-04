@@ -44,7 +44,7 @@ router.get("/edit-profile", (req, res, next) => {
 //Workout-list - display
 router.get("/:userId/workout", (req, res, next) => {
   Workout.find({ user: req.params.userId })
-  .populate("exercises")
+    .populate("exercises")
     .then((workoutDetails) => {
       res.render("clients/client-workouts", {workout:workoutDetails});
     })

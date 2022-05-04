@@ -2,8 +2,6 @@ const router = require("express").Router();
 const Workout = require("../models/Workout.model");
 const Exercise = require("../models/Exercise.model");
 
-
-
 // Create new workout - render form - COMMENTED OUT AS TRYING SOMETHING ELSE
 // router.get("/:userId/create-new-workout", (req, res, next) => {
 //   console.log(
@@ -41,15 +39,15 @@ const Exercise = require("../models/Exercise.model");
 //     });
 // });
 
-//Create new workout - render form 
+//Create new workout - render form
 router.get("/:clientId/create-new-workout", (req, res, next) => {
   Exercise.find()
     .then((exerciseDetails) => {
       const workoutData = {
         exercise: exerciseDetails,
-        userId: req.params.clientId
-      }
-      res.render("workouts/create-new-workout", {workout:workoutData});
+        userId: req.params.clientId,
+      };
+      res.render("workouts/create-new-workout", { workout: workoutData });
       console.log(workoutData);
     })
     .catch((err) => {
@@ -63,13 +61,12 @@ router.post("/:clientId/add-new-workout", (req, res, next) => {
     exercises: req.body.exercise,
     description: req.body.description,
     user: req.params.clientId,
-  }
+  };
   console.log(newWorkout);
-  Workout.create(newWorkout)
-  .then((workoutData) => {
+  Workout.create(newWorkout).then((workoutData) => {
     res.redirect("/instructor/homepage");
-  })
-})
+  });
+});
 
 router.get('/:clientId/view-workout', (req, res, next) => {
   let user = req.params.clientId
