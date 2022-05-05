@@ -11,22 +11,84 @@ const Exercise = require("../models/Exercise.model");
 //Exercises list
 router.get("/", isLoggedIn, (req, res, next) => {
   let filter;
+
   console.log(req.query.category);
   console.log(req.query.name);
   const categorySearch = req.query.category;
   const nameSearch = req.query.name;
-  if (nameSearch === undefined && categorySearch === undefined) {
+  if (
+    nameSearch === undefined &&
+    categorySearch === undefined &&
+    req.session.user.role !== "client"
+  ) {
     filter = {};
-  } else if (nameSearch === "" && categorySearch === "") {
+  } else if (
+    nameSearch === undefined &&
+    categorySearch === undefined &&
+    req.session.user.role === "client"
+  ) {
+    filter = {
+      createdBy: req.session.user.instructor,
+    };
+  } else if (
+    nameSearch === "" &&
+    categorySearch === "" &&
+    req.session.user.role !== "client"
+  ) {
     filter = {};
-  } else if (nameSearch !== "" && categorySearch === "") {
+  } else if (
+    nameSearch === "" &&
+    categorySearch === "" &&
+    req.session.user.role === "client"
+  ) {
+    filter = {
+      createdBy: req.session.user.instructor,
+    };
+  } else if (
+    nameSearch !== "" &&
+    categorySearch === "" &&
+    req.session.user.role !== "client"
+  ) {
     filter = { name: nameSearch };
-  } else if (nameSearch === "" && categorySearch !== "") {
+  } else if (
+    nameSearch !== "" &&
+    categorySearch === "" &&
+    req.session.user.role === "client"
+  ) {
+    filter = { name: nameSearch, createdBy: req.session.user.instructor };
+  } else if (
+    nameSearch === "" &&
+    categorySearch !== "" &&
+    req.session.user.role !== "client"
+  ) {
     filter = { category: categorySearch };
-  } else if (nameSearch !== "" && categorySearch !== "") {
+  } else if (
+    nameSearch === "" &&
+    categorySearch !== "" &&
+    req.session.user.role === "client"
+  ) {
+    filter = {
+      category: categorySearch,
+      createdBy: req.session.user.instructor,
+    };
+  } else if (
+    nameSearch !== "" &&
+    categorySearch !== "" &&
+    req.session.user.role !== "client"
+  ) {
     filter = {
       name: nameSearch,
       category: categorySearch,
+    };
+  } else if (
+    nameSearch !== "" &&
+    categorySearch !== "" &&
+    req.session.user.role === "client"
+  ) {
+    filter = {
+      name: nameSearch,
+      category: categorySearch,
+      createdBy: req.session.user.instructor,
     };
   }
   Exercise.find(filter)
