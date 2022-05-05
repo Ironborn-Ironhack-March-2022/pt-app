@@ -133,7 +133,7 @@ button {
 .topnav-right {
   float: right;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 992px) {
   body {
     height: auto;
   }
@@ -165,6 +165,11 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
+  }
+
+  .container.main {
+    position: absolute;
+    top: 0;
   }
 }
 
@@ -213,26 +218,22 @@ li {
 }
 
 .profile-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
   margin: 10px;
+  
 }
 
-@media only screen and (min-width: 992px) {
-  .main {
-    position: relative;
-    top: 200px;
-    z-index: 2000;
-  }
 
-  .navbar {
-    position: absolute;
-    top: -95%;
-  }
 
   .img {
     width: 10%;
     height: auto;
   }
-}
+
 
 .client-add-form{
   align-items: center;
