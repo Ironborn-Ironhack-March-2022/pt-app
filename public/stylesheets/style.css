@@ -1,31 +1,35 @@
 body {
-  margin: 0;
-  width: 50%;
-  padding: 10px;
+ 
+  width: 100vw;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
-  margin: auto;
+  margin: 0 auto;
+  background: orange
+}
+
+#layout-header{
+  width: 100vw;
+  margin: 20% auto;
+}
+#layout-header img{
+  width: 50%;
 }
 
 
-
-@media only screen and (min-width: 992px) {
-  .main {
-    position: relative;
-    top: 200px;
-    z-index: 2000;
-  }
-
-  .navbar {
-    position: absolute;
-    top: -840px;
-  }
-
-  .img {
-    width: 10%;
-    height: auto;
-  }
+/* HOMEPAGE */
+.hompage-container{
+  margin: 0 auto;
 }
+.hompage-container button{
+  margin: 0 auto;
+}
+
+.hompage-container ul, .hompage-container li{ 
+  padding-inline-start: 0;
+  padding: 0;
+}
+
+
 
 a {
   color: #00b7ff;
@@ -57,7 +61,6 @@ textarea {
 }
 
 button {
-  margin: 20;
   width: 150px;
   height: 30px;
   border: none;
@@ -68,7 +71,6 @@ button {
 }
 
 .btn-orange {
-  margin: 20;
   width: 150px;
   height: 30px;
   border: none;
@@ -82,9 +84,9 @@ li {
   list-style: none;
 }
 
-.instructor-clients {
+.flex-center-row-wrap{
 display: flex;
-justify-content: center;
+justify-content: space-around;
 flex-flow: row wrap;
 }
 
@@ -94,3 +96,29 @@ flex-flow: row wrap;
   justify-content: center;
   }
 
+.flex{
+  display: flex
+}
+
+
+
+
+
+
+@media only screen and (min-width: 992px) {
+  .main {
+    position: relative;
+    top: 200px;
+    z-index: 2000;
+  }
+
+  .navbar {
+    position: absolute;
+    top: -95%;
+  }
+
+  .img {
+    width: 10%;
+    height: auto;
+  }
+}
