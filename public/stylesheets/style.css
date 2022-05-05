@@ -222,9 +222,7 @@ li {
   flex-direction: column;
   justify-content: center;
   margin: 10px;
-  
 }
-
 
 
   .img {
@@ -259,6 +257,4 @@ input, textarea, select{
   width: 90%;
   margin: 5% auto;
 }
-
-.flx
 

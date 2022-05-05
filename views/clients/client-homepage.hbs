@@ -5,38 +5,36 @@
 
 {{/if}}
 
-<div class="container" id="layout-body">
-    <div class="col-12">
-        <div class="row">
-            <h3>Home: {{client.userName}}</h3>
+<div class="profile-container">
+
+    <h3>Home: {{client.userName}}</h3>
 
 
-            <form action="/client/{{client._id}}/workout" method="get">
-                <button class="btn-orange">Your Workout </button>
-            </form>
+    <form action="/client/{{client._id}}/workout" method="get">
+        <button class="btn-orange">Your Workout </button>
+    </form>
 
-            <form action="/user/favorites" method="get">
-                <button>Favorite Exercises</button>
-            </form>
+    <form action="/user/favorites" method="get">
+        <button>Favorite Exercises</button>
+    </form>
 
-            <form action="/exercises/" method="get">
-                <button class="btn-orange">All Exercises</button>
-            </form>
+    <form action="/exercises/" method="get">
+        <button class="btn-orange">All Exercises</button>
+    </form>
 
 
-            <form action="/client/profile" method="get">
-                <button>Your Profile</button>
-            </form>
+    <form action="/client/profile" method="get">
+        <button>Your Profile</button>
+    </form>
 
-            <form action="/client/{{client._id}}/client-instructor" method="get">
-                <button>Your Instructor</button>
-            </form>
+    <form action="/client/{{client._id}}/client-instructor" method="get">
+        <button>Your Instructor</button>
+    </form>
 
-            <form action="/auth/logout" method="GET">
-                <button type="submit">Logout</button>
-            </form>
+    <form action="/auth/logout" method="GET">
+        <button type="submit">Logout</button>
+    </form>
 
-        </div>
-    </div>
-</div>
+
+
 </div>
