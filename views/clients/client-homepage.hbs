@@ -1,47 +1,45 @@
-{{#if msg}}
-  <div>
-    <h5 style="color: red">{{msg}}</h5>
-  </div>
+<div class="xtra-margin">
+  {{#if msg}}
+    <div>
+      <h5 style="color: red">{{msg}}</h5>
+    </div>
 
-{{/if}}
+  {{/if}}
 
-<div class="profile-container">
+  <div class="profile-container">
 
-  <h3>Home: {{client.userName}}</h3>
+    <h3>Home: {{client.userName}}</h3>
 
-  <img
-    class="avatar"
-    src="{{client.image}}"
-    alt="{{client.userName}}'s profile picture"
-  />
+    <img
+      class="avatar"
+      src="{{client.image}}"
+      alt="{{client.userName}}'s profile picture"
+    />
 
-            <form action="/client/{{client._id}}/workout" method="get">
-                <button>Your Workout </button>
-            </form>
-        <div class="flex">
-            <form action="/user/favorites" method="get">
-                <button  class="btn-orange">Favorite Exercises</button>
-            </form>
+    <form action="/client/{{client._id}}/workout" method="get">
+      <button>Your Workout </button>
+    </form>
+    <div class="flex">
+      <form action="/user/favorites" method="get">
+        <button class="btn-orange">Favorite Exercises</button>
+      </form>
 
-            <form action="/exercises/" method="get">
-                <button class="btn-orange">All Exercises</button>
-            </form>
-        </div>
-            <form action="/client/profile" method="get">
-                <button>Your Profile</button>
-            </form>
-
+      <form action="/exercises/" method="get">
+        <button class="btn-orange">All Exercises</button>
+      </form>
+    </div>
 
     <form action="/client/{{client._id}}/client-instructor" method="get">
-        <button class="btn-orange">Your Instructor</button>
+      <button class="btn-orange">Your Instructor</button>
     </form>
-  </div>
-  <form action="/client/profile" method="get">
-    <button>Your Profile</button>
-  </form>
+
+    <form action="/client/profile" method="get">
+      <button>Your Profile</button>
+    </form>
 
     <form action="/auth/logout" method="GET">
-        <button type="submit">Logout</button>
+      <button type="submit">Logout</button>
     </form>
-    </div>
+
+  </div>
 </div>
