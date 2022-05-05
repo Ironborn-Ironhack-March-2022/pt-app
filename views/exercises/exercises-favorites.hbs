@@ -10,7 +10,8 @@
     <button>Remove from favorites </button>
   </form>
   {{/each}}
-  <form action="/instructor/homepage" method="get">
+  
+  <form action="{{user.role}}/homepage" method="get">
     <button class="btn-orange">Return to homepage</button>
   </form>
 

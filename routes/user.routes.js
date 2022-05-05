@@ -12,7 +12,6 @@ router.get("/favorites", isLoggedIn, (req, res,next) => {
     User.findById(req.session.user._id)
     .populate("favorites")
     .then(userDetails => {
-        console.log(userDetails.favorites);
         res.render("exercises/exercises-favorites", {user: userDetails.favorites});
     })
     .catch(err => {console.log("error getting favorites for db", err)
