@@ -27,12 +27,25 @@
                 <button>Your Profile</button>
             </form>
 
-            <form action="/client/{{client._id}}/client-instructor" method="get">
-                <button>Your Instructor</button>
-            </form>
+    <form action="/client/profile" method="get">
+        <button>Your Profile</button>
+    </form>
 
+    <form action="/client/{{client._id}}/client-instructor" method="get">
+        <button>Your Instructor</button>
+    </form>
+
+    <form action="/auth/logout" method="GET">
+        <button type="submit">Logout</button>
+    </form>
+
+
+<<<<<<< HEAD
             <form action="/auth/logout" method="GET">
                 <button type="submit">Logout</button>
             </form>
     </div>
+=======
+
+>>>>>>> 551d2c8a793051930d0b59ad93f769d69da660ab
 </div>
