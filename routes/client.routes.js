@@ -109,6 +109,19 @@ router.get("/favorites", (req, res, next) => {
   res.render("clients/client-favorites");
 });
 
+//Display Instructor
+router.get("/:clientId/client-instructor", (req, res, next) => {
+User.findById(req.session.user._id)
+.populate("instructor")
+.then((response) => {
+res.render("clients/client-instructor", response);
+})
+.catch((err) => {
+  console.log("Error updating workout", err);
+  next(err);
+});
+})
+
 //Client-day
 router.get("/client-day", (req, res, next) => {
   User.findById(req.session.user._id)
