@@ -4,6 +4,7 @@ body {
   text-align: center;
   margin: 0 auto;
   background: #e1e1e1;
+  padding-top: 55px;
 }
 
 #layout-logo {
@@ -125,6 +126,9 @@ button {
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .topnav a {
   float: left;
@@ -159,6 +163,7 @@ button {
 @media screen and (max-width: 992px) {
   body {
     height: auto;
+    padding-top: 15px;
   }
   #your-client {
     display: flex;
@@ -173,15 +178,7 @@ button {
     flex-direction: column-reverse;
     height: 100%;
   }
-  .topnav {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    overflow: visible;
-  }
+
   .topnav a {
     font-size: 0.9rem;
   }
@@ -198,6 +195,20 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
+
+  }
+
+  .topnav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
 
   .container.main {
