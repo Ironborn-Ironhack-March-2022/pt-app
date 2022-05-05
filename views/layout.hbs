@@ -9,23 +9,19 @@
   </head>
 
   <body>
-
-    <div>
-      <nav class="navbar">
-          <a class="navbar-brand" href="/workout">Workout</a>
-          <a class="navbar-brand" href="/index">Home</a>
-          <a class="navbar-brand" href="/day">Day</a>
-      </nav>
-
-      <div class="container main">
-        <div class="col-12">
-          <div class="row">
-            {{{body}}}
-    
-          </div>
-        </div>
+    <div class="topnav">
+      <div class="topnav-left">
+        <a href="/workout">Workout</a>
       </div>
-
+      <div class="topnav-centered">
+        <a href="/homepage">Home</a>
+      </div>
+      <div class="topnav-right">
+        <a href="/day">Day</a>
+      </div>
+    </div>
+    <div class="container main">
+      {{{body}}}
     </div>
 
     <script src="/js/script.js"></script>

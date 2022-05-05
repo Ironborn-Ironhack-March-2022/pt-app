@@ -4,6 +4,13 @@
   </div>
 </header>
 
+{{#if user}}
+  <form action="/{{user.role}}/homepage" method="GET">
+    <button type="submit">Homepage</button>
+  </form>
+  <form action="/auth/logout" method="GET">
+    <button type="submit">Logout</button>
+  </form>
 
 {{#if user}}
 <form action="/{{user.role}}/homepage" method="GET">

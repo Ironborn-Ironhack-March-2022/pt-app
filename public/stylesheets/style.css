@@ -1,35 +1,32 @@
 body {
- 
   width: 100vw;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 0 auto;
-  background: orange
+  background: orange;
 }
 
-#layout-header{
+#layout-header {
   width: 100vw;
   margin: 20% auto;
 }
-#layout-header img{
+#layout-header img {
   width: 50%;
 }
 
-
 /* HOMEPAGE */
-.hompage-container{
+.hompage-container {
   margin: 0 auto;
 }
-.hompage-container button{
+.hompage-container button {
   margin: 0 auto;
 }
 
-.hompage-container ul, .hompage-container li{ 
+.hompage-container ul,
+.hompage-container li {
   padding-inline-start: 0;
   padding: 0;
 }
-
-
 
 a {
   color: #00b7ff;
@@ -53,7 +50,6 @@ input {
   flex-direction: column;
   margin: 20;
   justify-content: center;
-
 }
 
 textarea {
@@ -72,13 +68,80 @@ button {
   margin: 10px;
 }
 
+.topnav {
+  position: relative;
+  background-color: #333;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
+.topnav a {
+  float: left;
+  color: #e73725;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topnav-left {
+  float: left;
+}
+.topnav-right {
+  float: right;
+}
+@media screen and (max-width: 600px) {
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+  }
+  .topnav-right {
+    float: none;
+    display: block;
+  }
+  .topnav-left {
+    float: none;
+    display: block;
+  }
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
 .btn-orange {
   width: 150px;
   height: 30px;
   border: none;
   outline: none;
   color: #fff;
-  background: #E73725;
+  background: #e73725;
   border-radius: 10px;
   padding: 5px 5px;
   margin: 10px;
@@ -93,26 +156,21 @@ li {
   list-style: none;
 }
 
-.flex-center-row-wrap{
-display: flex;
-justify-content: space-around;
-flex-flow: row wrap;
+.flex-center-row-wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
 }
 
 .instructor-add-clients {
   display: flex;
   align-items: flex;
   justify-content: center;
-  }
-
-.flex{
-  display: flex
 }
 
-
-
-
-
+.flex {
+  display: flex;
+}
 
 @media only screen and (min-width: 992px) {
   .main {
