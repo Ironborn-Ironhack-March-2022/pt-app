@@ -1,21 +1,23 @@
-<img src="{{client.image}}" alt="" />
+<img class="profile-pic" src="{{client.image}}" alt="" />
 
-<h1>{{client.userName}}</h1>
-
-
-<h3>Your details:</h3>
-<ul>
+<div class="profile-container">
+  <h1>{{client.userName}}</h1>
+  <br />
+  <h3>Your details:</h3>
+  <br />
   <p>About <strong>{{client.userName}}</strong>: {{client.about}}</p>
+  <br />
   <li>User name: {{client.userName}}</li>
+  <br />
   <li>Email: {{client.email}}</li>
+</div>
 
-</ul>
 <form action="/client/edit-profile" method="get">
   <button>Edit your Profile </button>
 </form>
 <br />
 <form action="/exercises/{{client._id}}/favourites" method="get">
-  <button>Edit your Favorite Exercises</button>
+  <button class="btn-large">Edit your Favorite Exercises</button>
 </form>
 <br />
 <form action="/client/{{client._id}}/client-insturctor" method="get">
