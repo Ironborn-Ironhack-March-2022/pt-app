@@ -72,7 +72,7 @@ router.post("/:clientId/add-new-workout", isClient, (req, res, next) => {
 router.get("/:clientId/view-workout", isClient, (req, res, next) => {
   let user = req.params.clientId;
   console.log(user);
-  Workout.find({ _id: user })
+  Workout.find({ user: user })
     .populate("exercises")
     .then((workouts) => {
       console.log(user);
