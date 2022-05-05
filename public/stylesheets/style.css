@@ -6,13 +6,17 @@ body {
   background: #e1e1e1;
 }
 
-#layout-header {
+#layout-logo {
+  max-height: 30vw;
+  max-width: 30vw;
+  margin: 10px;
+}
+
+/* #layout-header {
   width: 100vw;
   margin: 20% auto;
-}
-#layout-header img {
-  width: 50%;
-}
+} */
+
 
 /* instructor clients */
 #your-clients {
@@ -277,7 +281,14 @@ li {
   height: auto;
 }
 
-.client-add-form {
+/* 
+  .img {
+    width: 10%;
+    height: auto;
+  } */
+
+
+.client-add-form{
   align-items: center;
 }
 

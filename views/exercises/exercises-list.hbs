@@ -28,20 +28,20 @@
   </div>
   <h1>List of exercises:</h1>
   {{#each exercises}}
-    <img src="{{this.image}}" alt="image of {{this.name}}" />
-    <h3>{{this.name}}</h3>
-    <div class="exercise-list-anchors">
-      <a href="/exercises/{{this._id}}">More details!</a>
-    </div>
-    <form action="/exercises/favorites/{{this._id}}"method="POST">
+  <img src="{{this.image}}" alt="image of {{this.name}}" />
+  <h3>{{this.name}}</h3>
+  <div class="exercise-list-anchors">
+    <a href="/exercises/{{this._id}}">More details!</a>
+  </div>
+  <form action="/exercises/favorites/{{this._id}}" method="POST">
     <button>Add to favorites </button>
-    </form>
+  </form>
   {{/each}}
   <div class="exercise-list-anchors xtra-margin">
-      <a href="/exercises/create">Create exercise!</a>
+    <a href="/exercises/create">Create exercise!</a>
   </div>
 
-   <form action="/instructor/homepage" method="get">
+  <form action="/instructor/homepage" method="get">
     <button>Return to homepage</button>
   </form>
 </div>

@@ -42,16 +42,16 @@
 
   <div class="flex-center-row-wrap">
     <form action="/exercises" method="get">
-      <button>All Exercises </button>
+      <button class="btn-orange">All Exercises </button>
     </form>
 
-    <form action="/user/favorites" method="get">
-      <button class="btn-orange">Favorite Exercises</button>
-    </form>
+    <form action="/exercises/create" method="get">
+      <button class="btn-orange">Create exercise!</button>
+  </div>
   </div>
 
   <form action="/instructor/{{instructor._id}}/workouts" method="get">
-    <button class="btn-orange">Go to workouts</button>
+    <button>Go to workouts</button>
   </form>
 
   <form action="/auth/logout" method="GET">
