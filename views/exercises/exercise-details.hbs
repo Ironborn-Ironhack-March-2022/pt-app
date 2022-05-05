@@ -1,13 +1,21 @@
-<div>
+<div class="exercise-details">
   <img src="{{image}}" alt="image of exercise" />
   <h2>Exercise: {{name}}</h2>
   <h4>Category: {{category}}</h4>
-  <p>Description: {{description}}</p>
-  <p>How many reps for example: {{reps}}</p>
-  <p>How many sets for example: {{sets}}</p>
-  <a href="/exercises/{{_id}}/edit">Edit exercise!</a>
+  <p class="desc"><strong>Description: </strong>{{description}}</p>
+  <p>Example amount of reps: {{reps}}</p>
+  <p>Example amount of sets: {{sets}}</p>
+
+
+  <form action="/exercises/{{_id}}/edit" method="get">
+    <button>Edit exercise!</button>
+  </form>
 
   <form action="/exercises/{{_id}}/delete" method="POST">
     <button>Delete Exercise</button>
+  </form>
+
+  <form action="/exercises" method="get">
+    <button>Return to all Exercises</button>
   </form>
 </div>

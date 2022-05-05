@@ -32,9 +32,9 @@ body {
   padding: 0;
 }
 
-a {
+/* a {
   color: #00b7ff;
-}
+} */
 
 h1 {
   color: 15px;
@@ -52,8 +52,28 @@ img {
 input {
   display: flex;
   flex-direction: column;
-  margin: 20;
+  margin: 20px auto;
   justify-content: center;
+}
+
+.exercise-list img,
+.exercise-details img {
+  border-radius: 25px;
+  width: 60%;
+  max-height: 30%;
+}
+
+.exercise-list-anchors {
+  text-align: center;
+  margin: 20px;
+}
+.exercise-list-anchors a {
+  text-align: center;
+  background: #e73725;
+  border-radius: 10px;
+  padding: 10px 25px;
+  color: white;
+  text-decoration: none;
 }
 
 textarea {
@@ -113,6 +133,14 @@ button {
   float: right;
 }
 @media screen and (max-width: 992px) {
+  body {
+    height: auto;
+  }
+  #page {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+  }
   .topnav {
     display: flex;
     flex-direction: row;
@@ -137,6 +165,11 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
+  }
+
+  .container.main {
+    position: absolute;
+    top: 0;
   }
 }
 
@@ -192,23 +225,46 @@ li {
 }
 
 .profile-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
   margin: 10px;
 }
 
-@media only screen and (min-width: 992px) {
-  .main {
-    position: relative;
-    top: 100px;
-    z-index: 2000;
-  }
+.img {
+  width: 10%;
+  height: auto;
+}
 
-  .navbar {
-    position: absolute;
-    top: -95%;
-  }
+.client-add-form {
+  align-items: center;
+}
 
-  .img {
-    width: 10%;
-    height: auto;
-  }
+input,
+textarea,
+select {
+  border-radius: 20px;
+  padding: 0.5em;
+}
+
+.instructor-edit input,
+label,
+br {
+  margin: 2% auto;
+}
+
+.flex-justify {
+  display: flex;
+  justify-content: center;
+}
+
+.exercise-details img {
+  margin: 10% auto;
+}
+
+.exercise-details .desc {
+  width: 90%;
+  margin: 5% auto;
 }
