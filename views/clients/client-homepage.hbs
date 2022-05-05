@@ -1,54 +1,42 @@
-
 {{#if msg}}
 <div>
     <h5 style="color: red">{{msg}}</h5>
 </div>
 
 {{/if}}
-<h3>Your Home Page: {{client.userName}}</h3>
+
+<div class="container" id="layout-body">
+    <div class="col-12">
+        <div class="row">
+            <h3>Home: {{client.userName}}</h3>
 
 
-{{!
-<h3>Your Tasks:</h3>
-<ul>
-    <li>Task 1</li>
-    <li>Task 2</li>
-    <li>Task 3</li>
+            <form action="/client/{{client._id}}/workout" method="get">
+                <button class="btn-orange">Your Workout </button>
+            </form>
 
-</ul> }}
+            <form action="/user/favorites" method="get">
+                <button>Favorite Exercises</button>
+            </form>
 
-{{! <label for="tasks">Your progress:</label> }}
+            <form action="/exercises/" method="get">
+                <button class="btn-orange">All Exercises</button>
+            </form>
 
-{{! <progress id="file" max="100" value="70"> 70% </progress>
-<br>
-<br>
-<br> }}
 
-<form action="/client/{{client._id}}/workout" method="get">
-    <button>Your Workout </button>
-</form>
-<br />
-<form action="/user/favorites" method="get">
-    <button>Favorite Exercises</button>
-</form>
-<br>
-<form action="/exercises/" method="get">
-    <button>All Exercises</button>
-</form>
-{{! <br>
-<form action="/client/client-day" method="get">
-    <button>Your Day</button>
-</form> --}}
-<br>
-<form action="/client/profile" method="get">
-    <button>Your Profile</button>
-</form>
+            <form action="/client/profile" method="get">
+                <button>Your Profile</button>
+            </form>
 
-<br>
-<form action="/client/{{client._id}}/client-instructor" method="get">
-    <button>Contact your Instructor</button>
-</form>
-<br />
-<form action="/auth/logout" method="GET">
-    <button type="submit">Logout</button>
-</form>
+            <form action="/client/{{client._id}}/client-instructor" method="get">
+                <button>Your Instructor</button>
+            </form>
+
+            <form action="/auth/logout" method="GET">
+                <button type="submit">Logout</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>

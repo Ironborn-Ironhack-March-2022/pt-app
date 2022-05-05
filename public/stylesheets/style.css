@@ -7,6 +7,8 @@ body {
   margin: auto;
 }
 
+
+
 @media only screen and (min-width: 992px) {
   .main {
     position: relative;
@@ -17,6 +19,11 @@ body {
   .navbar {
     position: absolute;
     top: -840px;
+  }
+
+  .img {
+    width: 10%;
+    height: auto;
   }
 }
 
@@ -36,3 +43,54 @@ img {
   display: flex;
   flex-direction: column;
 }
+
+input {
+  display: flex;
+  flex-direction: column;
+  margin: 20;
+  justify-content: center;
+
+}
+
+textarea {
+  margin: 20;
+}
+
+button {
+  margin: 20;
+  width: 150px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: rgb(3, 1, 8);
+  border-radius: 10px;
+}
+
+.btn-orange {
+  margin: 20;
+  width: 150px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #E73725;
+  border-radius: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.instructor-clients {
+display: flex;
+justify-content: center;
+flex-flow: row wrap;
+}
+
+.instructor-add-clients {
+  display: flex;
+  align-items: flex;
+  justify-content: center;
+  }
+

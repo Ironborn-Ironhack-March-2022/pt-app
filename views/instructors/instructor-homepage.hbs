@@ -1,11 +1,11 @@
 <h1>Your Home Page: {{instructor.userName}}</h1>
-
 <form action="/instructor/profile" method="get">
   <button>Your Profile </button>
 </form>
 
 <h3>Your Clients:</h3>
-{{#each instructor.clients}}
+<div class="instructor-clients">
+  {{#each instructor.clients}}
 
   <ul>
     <li>{{userName}}</li>
@@ -17,37 +17,41 @@
       </form>
 
       <form action="/workout/{{id}}/create-new-workout" method="get">
-        <button>Add new workouts</button>
+        <button class="btn-orange">Add new workouts</button>
       </form>
 
     </ul>
   </ul>
-{{/each}}
-<form action="/instructor/{{instructor._id}}/add-client" method="post">Add
-  Client
-  <input name="email" placeholder="client email" />
-  <button>Submit</button>
-</form>
-{{#if msg}}
+  {{/each}}
+</div>
+
+<div class="instructor-add-clients">
+  <form action="/instructor/{{instructor._id}}/add-client" method="post">Add
+    Client
+    <input name="email" placeholder="client email" />
+    <button>Submit</button>
+  </form>
+  {{#if msg}}
   <p>{{msg}}</p>
-{{/if}}
+  {{/if}}
+</div>
 
 <form action="/exercises" method="get">
   <button>All Exercises </button>
 </form>
-<br />
+
 <form action="/user/favorites" method="get">
   <button>Favorite Exercises</button>
 </form>
-<br />
+
 <form action="/exercises/" method="get">
   <button>All Exercises</button>
 </form>
-<br />
+
 <form action="/client/client-day" method="get">
   <button>Your Day</button>
 </form>
-<br />
+
 <form action="/instructor/{{instructor._id}}/workouts" method="get">
   <button>Go to workouts</button>
 </form>
