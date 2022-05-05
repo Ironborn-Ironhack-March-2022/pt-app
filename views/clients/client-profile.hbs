@@ -1,16 +1,10 @@
 <img class="avatar" src="{{client.image}}" alt="" />
 
-<div class="profile-container">
   <h1>{{client.userName}}</h1>
-  <br />
   <h3>Your details:</h3>
-  <br />
   <p>About <strong>{{client.userName}}</strong>: {{client.about}}</p>
-  <br />
-  <li>User name: {{client.userName}}</li>
-  <br />
-  <li>Email: {{client.email}}</li>
-</div>
+  <p>User name: {{client.userName}}</p>
+  <p>Email: {{client.email}}</p>
 
 <form action="/client/edit-profile" method="get">
   <button>Edit your Profile </button>
@@ -22,4 +16,8 @@
 <br />
 <form action="/client/{{client._id}}/client-insturctor" method="get">
   <button>Contact your Instructor</button>
+</form>
+
+<form action="/client/homepage" method="get">
+        <button>Return to homepage</button>
 </form>

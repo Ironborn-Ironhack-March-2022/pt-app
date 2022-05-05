@@ -163,7 +163,7 @@ button {
 @media screen and (max-width: 992px) {
   body {
     height: auto;
-    padding-top: 15px;
+    padding-top: 55px;
   }
   #your-client {
     display: flex;
