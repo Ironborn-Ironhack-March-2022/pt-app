@@ -14,6 +14,8 @@ body {
   width: 50%;
 }
 
+/* index page */
+
 /* HOMEPAGE */
 .hompage-container {
   margin: 0 auto;
@@ -36,10 +38,10 @@ h1 {
   color: 15px;
 }
 
-
-
 img {
-  width: 30%;
+  border-radius: 25px;
+  width: 60%;
+  max-height: 30%;
 }
 
 .workoutform {
@@ -54,17 +56,18 @@ input {
   justify-content: center;
 }
 
-.exercise-list img, .exercise-details img{
+.exercise-list img,
+.exercise-details img {
   border-radius: 25px;
   width: 60%;
-  max-height: 30%; 
+  max-height: 30%;
 }
 
-.exercise-list-anchors{
+.exercise-list-anchors {
   text-align: center;
   margin: 20px;
 }
-.exercise-list-anchors a{
+.exercise-list-anchors a {
   text-align: center;
   background: #e73725;
   border-radius: 10px;
@@ -86,17 +89,15 @@ button {
   background: rgb(3, 1, 8);
   border-radius: 10px;
   padding: 5px 5px;
-  margin: 10px;
+  margin: 10px auto;
 }
 
+/* navbar setup top */
 .topnav {
   position: relative;
   background-color: #333;
-  overflow: hidden;
-
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
@@ -145,10 +146,11 @@ button {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    align-content: flex-end;
+    align-content: center;
+    overflow: visible;
   }
   .topnav a {
-    font-size: 15px;
+    font-size: 0.9rem;
   }
   .topnav-right {
     float: none;
@@ -205,6 +207,13 @@ li {
   justify-content: center;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .flex {
   display: flex;
 }
@@ -224,37 +233,49 @@ li {
   margin: 10px;
 }
 
+.img {
+  width: 10%;
+  height: auto;
+}
 
-  .img {
-    width: 10%;
-    height: auto;
-  }
-
-
-.client-add-form{
+.client-add-form {
   align-items: center;
 }
 
-input, textarea, select{
+input,
+textarea,
+select {
   border-radius: 20px;
   padding: 0.5em;
 }
 
-.instructor-edit input, label, br{ 
+.instructor-edit input,
+label,
+br {
   margin: 2% auto;
 }
 
-.flex-justify{
+.flex-justify {
   display: flex;
   justify-content: center;
 }
 
-.exercise-details img{
+.exercise-details img {
   margin: 10% auto;
 }
 
-.exercise-details .desc{
+.exercise-details .desc {
   width: 90%;
   margin: 5% auto;
 }
 
+.xtra-margin {
+  margin: 30;
+}
+
+.radio {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse-start;
+}
