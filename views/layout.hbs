@@ -9,19 +9,21 @@
   </head>
 
   <body>
-    <div class="topnav">
-      <div class="topnav-left">
-        <a href="/workout">Workout</a>
+    <div id="page">
+      <div class="topnav">
+        <div class="topnav-left">
+          <a href="/workout">Train</a>
+        </div>
+        <div class="topnav-centered">
+          <a href="/homepage">Home</a>
+        </div>
+        <div class="topnav-right">
+          <a href="/day">Day</a>
+        </div>
       </div>
-      <div class="topnav-centered">
-        <a href="/homepage">Home</a>
+      <div class="container main">
+        {{{body}}}
       </div>
-      <div class="topnav-right">
-        <a href="/day">Day</a>
-      </div>
-    </div>
-    <div class="container main">
-      {{{body}}}
     </div>
 
     <script src="/js/script.js"></script>
