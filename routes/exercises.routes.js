@@ -60,6 +60,7 @@ router.post(
       name: req.body.name,
       category: req.body.category,
       description: req.body.description,
+      createdBy: req.session.user._id,
       image: imageInfo,
     };
 
@@ -94,23 +95,37 @@ router.get("/:exerciseId/edit", isClient, (req, res, next) => {
     });
 });
 
-router.post("/:exerciseId/edit", isClient, (req, res, next) => {
-  const newInfo = {
-    name: req.body.name,
-    category: req.body.category,
-    description: req.body.description,
-    reps: req.body.reps,
-    sets: req.body.sets,
-  };
+router.post(
+  "/:exerciseId/edit",
+  cloudinary.single("file"),
+  isClient,
+  (req, res, next) => {
+    const exercise = Exercise.findById(req.params.exerciseId);
+    let imageInfo;
+    console.log(req.file);
+    if (req.file !== undefined) {
+      imageInfo = req.file.path;
+    } else if (req.file === undefined) {
+      imageInfo = exercise.image;
+    }
+    const newInfo = {
+      name: req.body.name,
+      category: req.body.category,
+      description: req.body.description,
+      reps: req.body.reps,
+      sets: req.body.sets,
+      image: imageInfo,
+    };
 
-  Exercise.findByIdAndUpdate(req.params.exerciseId, newInfo)
-    .then(() => {
-      res.redirect(`/exercises/${req.params.exerciseId}`);
-    })
-    .catch((error) => {
-      console.log("could not find exercise", error);
-    });
-});
+    Exercise.findByIdAndUpdate(req.params.exerciseId, newInfo)
+      .then(() => {
+        res.redirect(`/exercises/${req.params.exerciseId}`);
+      })
+      .catch((error) => {
+        console.log("could not find exercise", error);
+      });
+  }
+);
 
 //delete Exercises
 router.post("/:exerciseId/delete", isClient, (req, res, next) => {

@@ -26,6 +26,10 @@ const exerciseSchema = new Schema({
     type: Number,
     max: 5,
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Exercise = model("Exercise", exerciseSchema);

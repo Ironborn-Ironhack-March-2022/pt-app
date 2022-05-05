@@ -91,6 +91,7 @@ router.get("/:instructorId/workouts", isClient, (req, res, next) => {
 
 //Add's client to instructors database and vice versa
 router.post("/:instructorId/add-client", isClient, (req, res, next) => {
+  let instructorData;
   User.find({ email: req.body.email })
     .then((client) => {
       User.findByIdAndUpdate(
@@ -99,9 +100,16 @@ router.post("/:instructorId/add-client", isClient, (req, res, next) => {
         { new: true }
       )
         .populate("clients")
+        .then((response) => {
+          instructorData = response;
+          return User.findOneAndUpdate(
+            { email: req.body.email },
+            { $set: { instructor: req.params.instructorId } }
+          );
+        })
         .then((instructorDetails) => {
           res.render("instructors/instructor-homepage.hbs", {
-            instructor: instructorDetails,
+            instructor: instructorData,
             message: "Successfully added client",
           });
         });
