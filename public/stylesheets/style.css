@@ -17,7 +17,6 @@ body {
   margin: 20% auto;
 } */
 
-
 /* instructor clients */
 #your-clients {
   display: flex;
@@ -37,9 +36,6 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-}
-
-.instructor-clients {
 }
 
 /* index page */
@@ -287,8 +283,7 @@ li {
     height: auto;
   } */
 
-
-.client-add-form{
+.client-add-form {
   align-items: center;
 }
 
