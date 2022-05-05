@@ -1,15 +1,19 @@
 {{#if msg}}
-<div>
+  <div>
     <h5 style="color: red">{{msg}}</h5>
-</div>
+  </div>
 
 {{/if}}
 
 <div class="profile-container">
 
-            <h3>Home: {{client.userName}}</h3>
+  <h3>Home: {{client.userName}}</h3>
 
-            <img class="profile-pic"src="{{client.img}}" alt="{{client.userName}}'s profile picture">
+  <img
+    class="avatar"
+    src="{{client.image}}"
+    alt="{{client.userName}}'s profile picture"
+  />
 
             <form action="/client/{{client._id}}/workout" method="get">
                 <button>Your Workout </button>
@@ -31,6 +35,10 @@
     <form action="/client/{{client._id}}/client-instructor" method="get">
         <button class="btn-orange">Your Instructor</button>
     </form>
+  </div>
+  <form action="/client/profile" method="get">
+    <button>Your Profile</button>
+  </form>
 
     <form action="/auth/logout" method="GET">
         <button type="submit">Logout</button>
