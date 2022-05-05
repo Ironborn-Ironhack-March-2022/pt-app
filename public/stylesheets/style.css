@@ -157,6 +157,11 @@ button {
   margin: 10px;
 }
 
+.btn-large {
+  width: 150px;
+  height: 40px;
+}
+
 li {
   list-style: none;
 }
