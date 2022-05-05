@@ -2,7 +2,7 @@
 
 </script>
 
-<div>
+<div class="exercise-list">
   <div>
     <h3>Search exercise:</h3>
     <form action="/exercises" method="GET">
@@ -30,7 +30,7 @@
   {{#each exercises}}
     <img src="{{this.image}}" alt="image of {{this.name}}" />
     <h3>{{this.name}}</h3>
-    <div>
+    <div class="exercise-list-anchors">
       <a href="/exercises/{{this._id}}">More details!</a>
     </div>
     <form action="/exercises/favorites/{{this._id}}"method="POST">

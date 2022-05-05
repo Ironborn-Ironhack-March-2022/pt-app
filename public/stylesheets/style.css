@@ -28,13 +28,15 @@ body {
   padding: 0;
 }
 
-a {
+/* a {
   color: #00b7ff;
-}
+} */
 
 h1 {
   color: 15px;
 }
+
+
 
 img {
   width: 30%;
@@ -48,8 +50,27 @@ img {
 input {
   display: flex;
   flex-direction: column;
-  margin: 20;
+  margin: 20px auto;
   justify-content: center;
+}
+
+.exercise-list img, .exercise-details img{
+  border-radius: 25px;
+  width: 60%;
+  max-height: 30%; 
+}
+
+.exercise-list-anchors{
+  text-align: center;
+  margin: 20px;
+}
+.exercise-list-anchors a{
+  text-align: center;
+  background: #e73725;
+  border-radius: 10px;
+  padding: 10px 25px;
+  color: white;
+  text-decoration: none;
 }
 
 textarea {
@@ -206,5 +227,38 @@ li {
 
 
 
+  .img {
+    width: 10%;
+    height: auto;
+  }
 
+
+.client-add-form{
+  align-items: center;
+}
+
+input, textarea, select{
+  border-radius: 20px;
+  padding: 0.5em;
+}
+
+.instructor-edit input, label, br{ 
+  margin: 2% auto;
+}
+
+.flex-justify{
+  display: flex;
+  justify-content: center;
+}
+
+.exercise-details img{
+  margin: 10% auto;
+}
+
+.exercise-details .desc{
+  width: 90%;
+  margin: 5% auto;
+}
+
+.flx
 
