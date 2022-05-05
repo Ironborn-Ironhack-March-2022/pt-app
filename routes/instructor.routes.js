@@ -3,6 +3,9 @@ const User = require("../models/User.model");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
 const isClient = require("../middleware/isClient");
+const msg = [
+  "User not found",
+];
 
 router.get("/homepage", isClient, (req, res, next) => {
   User.findById(req.session.user._id)
@@ -10,6 +13,7 @@ router.get("/homepage", isClient, (req, res, next) => {
     .then((instructorDetails) => {
       res.render("instructors/instructor-homepage.hbs", {
         instructor: instructorDetails,
+        msg: msg[req.query.msg]
       });
     })
     .catch((err) => {
@@ -61,6 +65,7 @@ router.post(
       userName: req.body.userName,
       email: req.body.email,
       image: imageInfo,
+      about: req.body.about,
       role: req.body.role,
     };
     User.findByIdAndUpdate(req.session.user._id, updatedDetails)
@@ -114,13 +119,8 @@ router.post("/:instructorId/add-client", isClient, (req, res, next) => {
           });
         });
     })
-    .catch((err) => {
-      User.findById(req.params.instructorId).then((instructor) => {
-        return res.status(400).render("instructors/instructor-homepage.hbs", {
-          instructor,
-          errorMessage: "Error adding user: Invalid username.",
-        });
-      });
+    .catch(() => {
+      return res.redirect("/instructor/homepage?msg=0");
     });
 });
 

@@ -19,7 +19,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { userName, email, password, role } = req.body;
+  const { userName, email, password, role, about } = req.body;
 
   if (!userName) {
     return res.status(400).render("auth/signup", {
@@ -70,9 +70,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
         userDetails = {
           userName: userName,
-          userName: userName,
           email: email,
           role: role,
+          about: about,
           passwordHash: hashedPassword,
         };
         return User.create(userDetails);
@@ -80,7 +80,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         console.log("here.....", req.session);
         req.session.user = user;
-        if (user.role === "Client") {
+        console.log(user.role)
+        if (user.role === "client") {
           return res.redirect(`/client/homepage`);
         } else {
           return res.redirect(`/instructor/homepage`);

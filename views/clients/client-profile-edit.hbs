@@ -1,7 +1,7 @@
 <h1>Edit Your Profile {{client.userName}}</h1>
 
 <form
-  action="/clients/edit-profile"
+  action="/client/edit-profile"
   method="post"
   enctype="multipart/form-data"
 >
@@ -12,6 +12,11 @@
   </label>
   <label>Email:
     <input type="text" name="email" value="{{client.userName}}" />
+  </label>
+  <label>Edit About:
+    <br>
+    <textarea type="text" name="about" cols="30" rows="10">{{client.about}}
+    </textarea>
   </label>
   <label>Edit profile picture:
     <input type="file" id="image_input" name="file" accept="image/*" />

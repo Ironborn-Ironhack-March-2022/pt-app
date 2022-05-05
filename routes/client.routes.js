@@ -58,12 +58,13 @@ router.post("/edit-profile", cloudinary.single("file"), (req, res, next) => {
   const newInfo = {
     email: req.body.email || user.email,
     userName: req.body.userName || user.userName,
+    about: req.body.about,
     image: imageInfo,
   };
 
   User.findByIdAndUpdate(user._id, newInfo)
     .then(() => {
-      res.redirect(`/clients/profile`);
+      res.redirect(`/client/profile`);
     })
     .catch((error) => {
       console.log("Could not update profile:", error);

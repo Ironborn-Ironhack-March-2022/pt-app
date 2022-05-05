@@ -1,14 +1,16 @@
 <img src="{{client.image}}" alt="" />
 
-<h1>Welcome to your page: {{client.userName}}</h1>
+<h1>{{client.userName}}</h1>
+
 
 <h3>Your details:</h3>
 <ul>
+  <p>About <strong>{{client.userName}}</strong>: {{client.about}}</p>
   <li>User name: {{client.userName}}</li>
   <li>Email: {{client.email}}</li>
 
 </ul>
-<form action="/clients/edit-profile" method="get">
+<form action="/client/edit-profile" method="get">
   <button>Edit your Profile </button>
 </form>
 <br />
@@ -16,6 +18,6 @@
   <button>Edit your Favorite Exercises</button>
 </form>
 <br />
-<form action="/clients/{{client._id}}/client-insturctor" method="get">
+<form action="/client/{{client._id}}/client-insturctor" method="get">
   <button>Contact your Instructor</button>
 </form>

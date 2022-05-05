@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/Workout.model");
 const Exercise = require("../models/Exercise.model");
-const isClient = require("../middleware/isClient")
+const isClient = require("../middleware/isClient");
 
 // Create new workout - render form - COMMENTED OUT AS TRYING SOMETHING ELSE
 // router.get("/:userId/create-new-workout", (req, res, next) => {
@@ -42,7 +42,7 @@ const isClient = require("../middleware/isClient")
 
 //Create new workout - render form
 router.get("/:clientId/create-new-workout", isClient, (req, res, next) => {
-  Exercise.find()
+  Exercise.find({ createdBy: req.session.user._id })
     .then((exerciseDetails) => {
       const workoutData = {
         exercise: exerciseDetails,
@@ -69,16 +69,16 @@ router.post("/:clientId/add-new-workout", isClient, (req, res, next) => {
   });
 });
 
-router.get('/:clientId/view-workout', isClient, (req, res, next) => {
-  let user = req.params.clientId
-  console.log(user)
-  Workout.find({user: user})
+router.get("/:clientId/view-workout", isClient, (req, res, next) => {
+  let user = req.params.clientId;
+  console.log(user);
+  Workout.find({ user: user })
     .populate("exercises")
-    .then(workouts => {
-      console.log(user)
-      console.log(workouts)
-      res.render('workouts/workout-list.hbs', {workouts: workouts})
-    })
-})
+    .then((workouts) => {
+      console.log(user);
+      console.log(workouts);
+      res.render("workouts/workout-list.hbs", { workouts: workouts });
+    });
+});
 
 module.exports = router;

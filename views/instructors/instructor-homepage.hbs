@@ -28,11 +28,8 @@
   <input name="email" placeholder="client email" />
   <button>Submit</button>
 </form>
-{{#if message}}
-  <p>{{message}}</p>
-{{/if}}
-{{#if errorMessage}}
-  <p>{{errorMessage}}</p>
+{{#if msg}}
+  <p>{{msg}}</p>
 {{/if}}
 
 <form action="/exercises" method="get">

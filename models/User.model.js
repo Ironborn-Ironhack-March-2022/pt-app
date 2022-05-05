@@ -18,6 +18,10 @@ const userSchema = new Schema(
       trim: true,
       unique: true,
     },
+    about: {
+      type: String,
+      required: false,
+    },
     passwordHash: {
       type: String,
       required: [true, "Password is required"],
