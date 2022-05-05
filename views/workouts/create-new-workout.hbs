@@ -1,23 +1,23 @@
-<div>
-  <div>
-    <h1>Create a workout</h1>
-    <form class="workoutform" action="/workout/{{workout.userId}}/add-new-workout" method="POST">
+<div class="workout-create" >
+  <h1>Create a workout</h1>
+  <form class="workoutform" action="/workout/{{workout.userId}}/add-new-workout" method="POST">
+    <label>Exercises:
+      
+      {{#each workout.exercise}}
+      <div class="radio">
+        <input type="radio" name="exercise" value="{{this._id}}">{{this.name}}</input>
+      </div>
+      {{/each}}
+    </label>
 
-    {{!-- Above needs an action target, gonna post the created form and then it needs to go too client--}}
+    <label>Description:
+      <textarea name="description" id="" cols="30" rows="10" placeholder="Add a description"></textarea>
+    </label>
 
-      <label>Exercises:
-          <ul>
-            {{#each workout.exercise}}
-              <input type="radio" name="exercise" value="{{this._id}}">{{this.name}}</option>
-            {{/each}}
-            <ul>
-      </label>
-
-      <label for="">Description:
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
-      </label>
-
-      <button> Add to Workout</button>
-    </form>
-  </div>
+    <button> Add to Workout</button>
+  </form>
+  
+  <form action="/instructor/homepage" method="get">
+    <button>Return to homepage</button>
+  </form>
 </div>

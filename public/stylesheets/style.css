@@ -39,7 +39,9 @@ h1 {
 }
 
 img {
-  width: 30%;
+  border-radius: 25px;
+  width: 60%;
+  max-height: 30%;
 }
 
 .workoutform {
@@ -87,7 +89,7 @@ button {
   background: rgb(3, 1, 8);
   border-radius: 10px;
   padding: 5px 5px;
-  margin: 10px;
+  margin: 10px auto;
 }
 
 /* navbar setup top */
@@ -265,4 +267,15 @@ br {
 .exercise-details .desc {
   width: 90%;
   margin: 5% auto;
+}
+
+.xtra-margin {
+  margin: 30;
+}
+
+.radio {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse-start;
 }

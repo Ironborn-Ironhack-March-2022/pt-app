@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="homepage-container">
   <h1>Your Home Page: {{instructor.userName}}</h1>
   <form action="/instructor/profile" method="get">
@@ -42,10 +47,6 @@
       <button class="btn-orange">Favorite Exercises</button>
     </form>
   </div>
-
-  <form action="/client/client-day" method="get">
-    <button>Your Day</button>
-  </form>
 
   <form action="/instructor/{{instructor._id}}/workouts" method="get">
     <button class="btn-orange">Go to workouts</button>
