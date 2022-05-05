@@ -64,6 +64,8 @@ button {
   color: #fff;
   background: rgb(3, 1, 8);
   border-radius: 10px;
+  padding: 5px 5px;
+  margin: 10px;
 }
 
 .topnav {
@@ -141,6 +143,8 @@ button {
   color: #fff;
   background: #e73725;
   border-radius: 10px;
+  padding: 5px 5px;
+  margin: 10px;
 }
 
 li {
