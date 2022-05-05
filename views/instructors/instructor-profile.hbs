@@ -4,23 +4,23 @@
 
   <h3>Your details:</h3>
 
-  <p>User name: {{instructor.userName}}</p>
-  <p>Email: {{instructor.email}}</p>
-  <p>Role: {{instructor.role}}</p>
+  <p><strong>User name: </strong>{{instructor.userName}}</p>
+  <p><strong>Email: </strong>{{instructor.email}}</p>
+  <p><strong>Role: </strong>{{instructor.role}}</p>
 
   <p><strong>About {{instructor.userName}}: </strong>{{instructor.about}}</p>
   <form action="/instructor/profile/edit" method="get">
     <button>Edit your profile</button>
   </form>
 
-  <form action="/instructor/{{instructor._id}}/client-list" method="get">
+  {{!-- <form action="/instructor/{{instructor._id}}/client-list" method="get">
     <button class="btn-orange">Go to your client list</button>
-  </form>
+  </form> --}}
 
-  <form action="/instructor/{{instructor._id}}/add-client" method="post">
+  {{!-- <form action="/instructor/{{instructor._id}}/add-client" method="post">
     <input name="email" placeholder="client email" />
     <button>Add client</button>
-  </form>
+  </form> --}}
   {{#if message}}
     <p>{{message}}</p>
   {{/if}}

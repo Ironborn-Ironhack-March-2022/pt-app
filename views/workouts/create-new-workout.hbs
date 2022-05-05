@@ -1,7 +1,7 @@
 <div class="workout-create" >
   <h1>Create a workout</h1>
   <form class="workoutform" action="/workout/{{workout.userId}}/add-new-workout" method="POST">
-    <label>Exercises:
+    <label class="radio-div">Exercises:
       
       {{#each workout.exercise}}
       <div class="radio">

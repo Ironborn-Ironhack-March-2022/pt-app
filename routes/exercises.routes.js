@@ -11,9 +11,6 @@ const Exercise = require("../models/Exercise.model");
 //Exercises list
 router.get("/", isLoggedIn, (req, res, next) => {
   let filter;
-
-  console.log(req.query.category);
-  console.log(req.query.name);
   const categorySearch = req.query.category;
   const nameSearch = req.query.name;
   if (
@@ -92,8 +89,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
     };
   }
   Exercise.find(filter)
-    .then((response) => {
-      res.render("exercises/exercises-list", { exercises: response });
+  .then((response) => {
+      let instructor = false
+      if (req.session.user.role === 'instructor'){
+        instructor = true
+      }
+      res.render("exercises/exercises-list", {
+        exercises: response,
+        instructor: instructor
+      });
     })
     .catch((error) => {
       console.log("Could not load Exercise list:", error);
@@ -138,14 +142,19 @@ router.post(
 
 //Exercise details
 router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
+  let instructor = false
+  if (req.session.user.role === 'instructor'){
+    instructor = true
+  }
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
-      res.render("exercises/exercise-details", exeInfo);
+      res.render("exercises/exercise-details", {exeInfo: exeInfo, instructor: instructor});
     })
     .catch((error) => {
       console.log("could not find exercise", error);
     });
 });
+
 //Edit exercise details
 router.get("/:exerciseId/edit", isClient, (req, res, next) => {
   Exercise.findById(req.params.exerciseId)

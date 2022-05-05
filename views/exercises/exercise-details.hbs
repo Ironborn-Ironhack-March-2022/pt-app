@@ -6,7 +6,7 @@
   <p>Example amount of reps: {{reps}}</p>
   <p>Example amount of sets: {{sets}}</p>
 
-
+{{#if instructor}}
   <form action="/exercises/{{_id}}/edit" method="get">
     <button>Edit exercise!</button>
   </form>
@@ -14,6 +14,7 @@
   <form action="/exercises/{{_id}}/delete" method="POST">
     <button>Delete Exercise</button>
   </form>
+{{/if}}
 
   <form action="/exercises" method="get">
     <button>Return to all Exercises</button>

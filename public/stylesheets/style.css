@@ -19,6 +19,7 @@ body {
 } */
 
 /* instructor clients */
+
 #your-clients {
   display: flex;
   flex-direction: row;
@@ -120,7 +121,7 @@ button {
 /* navbar setup top */
 .topnav {
   position: relative;
-  background-color: #333;
+  background-color: rgb(37, 37, 37);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -142,7 +143,7 @@ button {
   background-color: #ddd;
   color: black;
 }
-.topnav a.active {
+.topnav a:active {
   background-color: #04aa6d;
   color: white;
 }
@@ -329,9 +330,22 @@ br {
   margin: 30;
 }
 
+.radio-div{
+  width: 100%;
+}
+
+.radio input {
+  width: 10%;
+  margin: 2.5% 0 2.5% 5%;
+}
+
 .radio {
   width: 80%;
   display: flex;
   align-items: center;
   flex-direction: row-reverse-start;
+}
+
+.front-page-logo{
+  width: 40%;
 }
