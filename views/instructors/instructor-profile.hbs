@@ -1,34 +1,36 @@
-<img src="{{instructor.image}}" alt="profile picture" />
-<h1>Welcome to your page: {{instructor.userName}}</h1>
+<div>
+  <img class="avatar" src="{{instructor.image}}" alt="profile picture" />
+  <h1>Welcome to your page: {{instructor.userName}}</h1>
 
-<h3>Your details:</h3>
+  <h3>Your details:</h3>
 
-<p>User name: {{instructor.userName}}</p>
-<p>Email: {{instructor.email}}</p>
-<p>Role: {{instructor.role}}</p>
+  <p>User name: {{instructor.userName}}</p>
+  <p>Email: {{instructor.email}}</p>
+  <p>Role: {{instructor.role}}</p>
 
-<p><strong>About {{instructor.userName}}: </strong>{{instructor.about}}</p>
-<form action="/instructor/profile/edit" method="get">
-  <button>Edit your profile</button>
-</form>
+  <p><strong>About {{instructor.userName}}: </strong>{{instructor.about}}</p>
+  <form action="/instructor/profile/edit" method="get">
+    <button>Edit your profile</button>
+  </form>
 
-<form action="/instructor/{{instructor._id}}/client-list" method="get">
-  <button class="btn-orange">Go to your client list</button>
-</form>
+  <form action="/instructor/{{instructor._id}}/client-list" method="get">
+    <button class="btn-orange">Go to your client list</button>
+  </form>
 
-<form  action="/instructor/{{instructor._id}}/add-client" method="post">
-  <input name="email" placeholder="client email" />
-  <button>Add client</button>
-</form>
-{{#if message}}
-  <p>{{message}}</p>
-{{/if}}
-{{#if errorMessage}}
-  <p>{{errorMessage}}</p>
-{{/if}}
-<form action="/instructor/{{instructor._id}}/workouts" method="get">
-  <button class="btn-orange">Go to workouts</button>
-</form>
-<form action="/auth/logout" method="GET">
-  <button type="submit">Logout</button>
-</form>
+  <form action="/instructor/{{instructor._id}}/add-client" method="post">
+    <input name="email" placeholder="client email" />
+    <button>Add client</button>
+  </form>
+  {{#if message}}
+    <p>{{message}}</p>
+  {{/if}}
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
+  <form action="/instructor/{{instructor._id}}/workouts" method="get">
+    <button class="btn-orange">Go to workouts</button>
+  </form>
+  <form action="/auth/logout" method="GET">
+    <button type="submit">Logout</button>
+  </form>
+</div>

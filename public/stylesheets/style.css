@@ -14,6 +14,30 @@ body {
   width: 50%;
 }
 
+/* instructor clients */
+#your-clients {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#instructor-clients-all {
+  flex-direction: column;
+}
+#instructor-clients {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructor-clients {
+}
+
 /* index page */
 
 /* HOMEPAGE */
@@ -136,12 +160,21 @@ button {
   body {
     height: auto;
   }
+  #your-client {
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   #page {
     display: flex;
     flex-direction: column-reverse;
     height: 100%;
   }
   .topnav {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -211,6 +244,12 @@ li {
   vertical-align: middle;
   width: 150px;
   height: 150px;
+  border-radius: 50%;
+}
+.avatar-2 {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
