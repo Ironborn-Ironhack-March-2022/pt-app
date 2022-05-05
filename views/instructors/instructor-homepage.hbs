@@ -40,21 +40,25 @@
     {{/if}}
   </div>
 
-  <div class="flex-center-row-wrap">
-    <form action="/exercises" method="get">
-      <button class="btn-orange">All Exercises </button>
-    </form>
+  <div>
+    <div class="flex-center-row-wrap">
+      <form action="/exercises" method="get">
+        <button class="btn-orange">All Exercises </button>
+      </form>
 
-    <form action="/exercises/create" method="get">
-      <button class="btn-orange">Create exercise!</button>
+      <form action="/exercises/create" method="get">
+        <button class="btn-orange">Create exercise!</button>
+      </form>
+    </div>
+
+    <div>
+      <form action="/instructor/{{instructor._id}}/workouts" method="get">
+        <button>Go to workouts</button>
+      </form>
+
+      <form action="/auth/logout" method="GET">
+        <button type="submit">Logout</button>
+      </form>
+    </div>
   </div>
-  </div>
-
-  <form action="/instructor/{{instructor._id}}/workouts" method="get">
-    <button>Go to workouts</button>
-  </form>
-
-  <form action="/auth/logout" method="GET">
-    <button type="submit">Logout</button>
-  </form>
 </div>
