@@ -68,6 +68,8 @@ button {
   color: #fff;
   background: rgb(3, 1, 8);
   border-radius: 10px;
+  padding: 5px 5px;
+  margin: 10px;
 }
 
 .btn-orange {
@@ -78,6 +80,8 @@ button {
   color: #fff;
   background: #E73725;
   border-radius: 10px;
+  padding: 5px 5px;
+  margin: 10px;
 }
 
 li {
