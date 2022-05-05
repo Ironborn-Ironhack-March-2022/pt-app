@@ -1,61 +1,57 @@
-<h1>Your Home Page: {{instructor.userName}}</h1>
-<form action="/instructor/profile" method="get">
-  <button>Your Profile </button>
-</form>
-
-<h3>Your Clients:</h3>
-<div class="instructor-clients">
-  {{#each instructor.clients}}
-
-  <ul>
-    <li>{{userName}}</li>
-    <ul>
-      {{! /* Change with the correct address to this page */ }}
-
-      <form action="/workout/{{id}}/view-workout" method="get">
-        <button>Check workouts</button>
-      </form>
-
-      <form action="/workout/{{id}}/create-new-workout" method="get">
-        <button class="btn-orange">Add new workouts</button>
-      </form>
-
-    </ul>
-  </ul>
-  {{/each}}
-</div>
-
-<div class="instructor-add-clients">
-  <form action="/instructor/{{instructor._id}}/add-client" method="post">Add
-    Client
-    <input name="email" placeholder="client email" />
-    <button>Submit</button>
+<div class="homepage-container">
+  <h1>Your Home Page: {{instructor.userName}}</h1>
+  <form action="/instructor/profile" method="get">
+    <button>Your Profile </button>
   </form>
-  {{#if msg}}
-  <p>{{msg}}</p>
-  {{/if}}
+
+  <h3>Your Clients:</h3>
+    {{#each instructor.clients}}
+
+      
+      <h4>{{userName}}</h4>
+  <div class="instructor-clients">
+        <div class="flex-center-row-wrap">
+          <form action="/workout/{{id}}/view-workout" method="get">
+            <button>Check workouts</button>
+          </form>
+
+          <form action="/workout/{{id}}/create-new-workout" method="get">
+            <button class="btn-orange">Add new workouts</button>
+          </form>
+        </div>
+  </div>
+    {{/each}}
+
+  <div class="instructor-add-clients">
+    <form action="/instructor/{{instructor._id}}/add-client" method="post">Add
+      Client
+      <input name="email" placeholder="client email" />
+      <button>Submit</button>
+    </form>
+    {{#if msg}}
+    <p>{{msg}}</p>
+    {{/if}}
+  </div>
+
+  <div class="flex-center-row-wrap">
+    <form action="/exercises" method="get">
+      <button>All Exercises </button>
+    </form>
+
+    <form action="/user/favorites" method="get">
+      <button class="btn-orange">Favorite Exercises</button>
+    </form>
+  </div>
+
+  <form action="/client/client-day" method="get">
+    <button>Your Day</button>
+  </form>
+
+  <form action="/instructor/{{instructor._id}}/workouts" method="get">
+    <button class="btn-orange">Go to workouts</button>
+  </form>
+
+  <form action="/auth/logout" method="GET">
+    <button type="submit">Logout</button>
+  </form>
 </div>
-
-<form action="/exercises" method="get">
-  <button>All Exercises </button>
-</form>
-
-<form action="/user/favorites" method="get">
-  <button>Favorite Exercises</button>
-</form>
-
-<form action="/exercises/" method="get">
-  <button>All Exercises</button>
-</form>
-
-<form action="/client/client-day" method="get">
-  <button>Your Day</button>
-</form>
-
-<form action="/instructor/{{instructor._id}}/workouts" method="get">
-  <button>Go to workouts</button>
-</form>
-
-<form action="/auth/logout" method="GET">
-  <button type="submit">Logout</button>
-</form>

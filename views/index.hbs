@@ -1,9 +1,7 @@
 <header>
-  <img
-    id="layout-logo"
-    src="\images\My Personal Trainer-logos_black.png"
-    alt=""
-  />
+  <div class="container" id="layout-header">
+        <img id="layout-logo" src="\images\My Personal Trainer-logos_black.png" alt="">
+  </div>
 </header>
 
 {{#if user}}
@@ -14,20 +12,28 @@
     <button type="submit">Logout</button>
   </form>
 
+{{#if user}}
+<form action="/{{user.role}}/homepage" method="GET">
+  <button type="submit">Homepage</button>
+</form>
+<form action="/auth/logout" method="GET">
+  <button type="submit">Logout</button>
+</form>
+
 {{else}}
-  <form action="/auth/login" method="GET">
-    <button type="submit">Login</button>
-  </form>
-  <br />
-  <br />
-  <br />
-  <form action="/auth/signup" method="GET">
-    <button type="submit">Sign Up</button>
-  </form>
-  <br />
-  <br />
-  <br />
-  <form action="" method="GET">
-    <button type="submit">About</button>
-  </form>
+<form action="/auth/login" method="GET">
+  <button type="submit">Login</button>
+</form>
+<br>
+<br>
+<br>
+<form action="/auth/signup" method="GET">
+  <button type="submit">Sign Up</button>
+</form>
+<br>
+<br>
+<br>
+<form action="" method="GET">
+  <button type="submit">About</button>
+</form>
 {{/if}}
