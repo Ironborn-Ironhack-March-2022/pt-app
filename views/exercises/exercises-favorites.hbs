@@ -1,16 +1,16 @@
 <div>
   <h1>Your Favorite Exercises:</h1>
   {{#each user}}
-  <img src="{{this.image}}" alt="image of {{this.name}}" />
-  <h3>{{this.name}}</h3>
-  <div class="exercise-list-anchors">
-    <a href="/exercises/{{this._id}}">More details!</a>
-  </div>
-  <form action="/exercises/favorites/{{this._id}}/remove" method="POST">
-    <button>Remove from favorites </button>
-  </form>
+    <img src="{{this.image}}" alt="image of {{this.name}}" />
+    <h3>{{this.name}}</h3>
+    <div class="exercise-list-anchors">
+      <a href="/exercises/{{this._id}}">More details!</a>
+    </div>
+    <form action="/exercises/favorites/{{this._id}}/remove" method="POST">
+      <button>Remove from favorites </button>
+    </form>
   {{/each}}
-  
+
   <form action="{{user.role}}/homepage" method="get">
     <button class="btn-orange">Return to homepage</button>
   </form>

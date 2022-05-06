@@ -23,11 +23,9 @@ router.get("/workout", isLoggedIn, (req, res, next) => {
   }
 });
 
-
 //Get day
 router.get("/day", (req, res, next) => {
-      res.render("clients/client-day");
-    })
-
+  res.render("clients/client-day");
+});
 
 module.exports = router;
