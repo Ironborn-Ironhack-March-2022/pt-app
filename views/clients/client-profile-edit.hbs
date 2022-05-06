@@ -7,16 +7,21 @@
     <input type="text" name="username" value="{{client.userName}}" />
   </label>
   <label>Email:
-    <input type="text" name="email" value="{{client.userName}}" />
+    <input type="text" name="email" value="{{client.email}}" />
   </label>
   <label>Edit About:
     <br />
-    <textarea type="text" name="about" cols="30" rows="10">{{client.about}}
-    </textarea>
+    <textarea name="about" cols="30" rows="10">{{client.about}}</textarea>
     <br />
   </label>
   <label>Edit profile picture:
-    <input type="file" id="image_input" name="file" accept="image/*,.jpg,.jpeg,.webp"  />
+    <input
+      type="file"
+      id="image_input"
+      name="file"
+      accept="image/*,.jpg,.jpeg,.webp"
+      value="{{client.image}}"
+    />
   </label>
   <br />
   <br />

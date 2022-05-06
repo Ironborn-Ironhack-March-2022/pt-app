@@ -10,7 +10,7 @@
   <div id="exercise-list">
     <h4> Add/Create an exercise:</h4>
     <label>Name:
-      <input type="text" name="name" />
+      <input type="text" name="name" required />
     </label>
     <label>Category:</label>
     <select id="catg" onchange="changeStatus()" name="category">
@@ -61,7 +61,7 @@
       </label>
     </div>
     <label>Image:</label>
-    <input type="file" id="image_input" name="file" accept="image/*" />
+    <input type="file" id="image_input" name="file" accept="image/*" required />
 
     <button type="submit">Create!</button>
 

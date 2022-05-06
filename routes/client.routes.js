@@ -53,6 +53,7 @@ router.post("/edit-profile", cloudinary.single("file"), (req, res, next) => {
   } else if (req.file === undefined) {
     imageInfo = user.image;
   }
+  console.log(req.session.user.image);
   const newInfo = {
     email: req.body.email || user.email,
     userName: req.body.userName || user.userName,
@@ -109,16 +110,16 @@ router.get("/favorites", (req, res, next) => {
 
 //Display Instructor
 router.get("/:clientId/client-instructor", (req, res, next) => {
-User.findById(req.session.user._id)
-.populate("instructor")
-.then((response) => {
-res.render("clients/client-instructor", response);
-})
-.catch((err) => {
-  console.log("Error updating workout", err);
-  next(err);
+  User.findById(req.session.user._id)
+    .populate("instructor")
+    .then((response) => {
+      res.render("clients/client-instructor", response);
+    })
+    .catch((err) => {
+      console.log("Error updating workout", err);
+      next(err);
+    });
 });
-})
 
 //Client-day
 router.get("/client-day", (req, res, next) => {
