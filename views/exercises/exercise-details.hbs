@@ -1,20 +1,20 @@
 <div class="exercise-details">
-  <img src="{{image}}" alt="image of exercise" />
-  <h2>Exercise: {{name}}</h2>
+  <img src="{{exeInfo.image}}" alt="image of exercise" />
+  <h2>Exercise: {{exeInfo.name}}</h2>
   <h4>Category: {{category}}</h4>
-  <p class="desc"><strong>Description: </strong>{{description}}</p>
-  <p>Example amount of reps: {{reps}}</p>
-  <p>Example amount of sets: {{sets}}</p>
+  <p class="desc"><strong>Description: </strong>{{exeInfo.description}}</p>
+  <p>Example amount of reps: {{exeInfo.reps}}</p>
+  <p>Example amount of sets: {{exeInfo.sets}}</p>
 
-{{#if instructor}}
-  <form action="/exercises/{{_id}}/edit" method="get">
-    <button>Edit exercise!</button>
-  </form>
+  {{#if instructor}}
+    <form action="/exercises/{{_id}}/edit" method="get">
+      <button>Edit exercise!</button>
+    </form>
 
-  <form action="/exercises/{{_id}}/delete" method="POST">
-    <button>Delete Exercise</button>
-  </form>
-{{/if}}
+    <form action="/exercises/{{_id}}/delete" method="POST">
+      <button>Delete Exercise</button>
+    </form>
+  {{/if}}
 
   <form action="/exercises" method="get">
     <button>Return to all Exercises</button>

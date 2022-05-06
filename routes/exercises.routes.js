@@ -89,14 +89,14 @@ router.get("/", isLoggedIn, (req, res, next) => {
     };
   }
   Exercise.find(filter)
-  .then((response) => {
-      let instructor = false
-      if (req.session.user.role === 'instructor'){
-        instructor = true
+    .then((response) => {
+      let instructor = false;
+      if (req.session.user.role === "instructor") {
+        instructor = true;
       }
       res.render("exercises/exercises-list", {
         exercises: response,
-        instructor: instructor
+        instructor: instructor,
       });
     })
     .catch((error) => {
@@ -142,13 +142,16 @@ router.post(
 
 //Exercise details
 router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
-  let instructor = false
-  if (req.session.user.role === 'instructor'){
-    instructor = true
+  let instructor = false;
+  if (req.session.user.role === "instructor") {
+    instructor = true;
   }
   Exercise.findById(req.params.exerciseId)
     .then((exeInfo) => {
-      res.render("exercises/exercise-details", {exeInfo: exeInfo, instructor: instructor});
+      res.render("exercises/exercise-details", {
+        exeInfo: exeInfo,
+        instructor: instructor,
+      });
     })
     .catch((error) => {
       console.log("could not find exercise", error);

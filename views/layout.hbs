@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    {{#unless user}}
       <div class="topnav">
         <div class="topnav-left">
           <a href="/workout"><strong>Train</strong></a>
@@ -20,12 +21,11 @@
           <a href="/day"><strong>Day</strong></a>
         </div>
       </div>
-      <div class="container main">
-      </div>
-        {{{body}}}
+    {{/unless}}
+    <div class="container main">
+    </div>
+    {{{body}}}
 
-
- 
     <script src="/js/script.js"></script>
   </body>
 

@@ -1,46 +1,62 @@
+<html lang="en">
 
-  <div class="container" id="layout-header">
-        <img id="layout-logo" src="\images\My Personal Trainer-logos_black.png" alt="">
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{appTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
+  <body>
+    <div class="container" id="layout-header">
+      <img
+        id="layout-logo"
+        src="\images\My Personal Trainer-logos_black.png"
+        alt=""
+      />
+    </div>
 
-<form action="/auth/signup" method="POST">
-  <label>
-    Username:
+    <form action="/auth/signup" method="POST">
+      <label>
+        Username:
 
-    <input type="text" name="userName" />
-  </label>
+        <input type="text" name="userName" placeholder="example123" />
+      </label>
 
-  <label>
-    Email:
-  
-    <input type="email" name="email" />
-  </label>
+      <label>
+        Email:
 
-  <label>
-    Password:
-   
-    <input type="password" name="password" />
-  </label>
+        <input type="email" name="email" placeholder="example@mail.com" />
+      </label>
 
-  <label>
-    About:<br>
-  
-    <textarea type="text" name="about" cols="30" rows="10">Tell us about your self
-    </textarea>
-  </label>
+      <label>
+        Password:
 
-  <br><label>Role:<br>
+        <input type="password" name="password" placeholder="****" />
+      </label>
 
-    <select name="role">
-      <option value="instructor">Instructor</option>
-      <option value="client">Client</option>
-    </select>
-  </label>
-<br>
-  <button type="submit">Submit</button>
-</form>
+      <label>
+        Tell us about yourself:<br />
 
-{{#if errorMessage}}
-  {{errorMessage}}
-{{/if}}
+        <textarea type="text" name="about" cols="32" rows="10">
+
+        </textarea>
+      </label>
+      <br /><label>Role:<br />
+        <select name="role">
+          <option value="instructor">Instructor</option>
+          <option value="client">Client</option>
+        </select>
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+
+    {{#if errorMessage}}
+      {{errorMessage}}
+    {{/if}}
+    <script src="/js/script.js"></script>
+  </body>
+
+</html>

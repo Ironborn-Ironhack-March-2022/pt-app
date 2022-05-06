@@ -15,7 +15,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { layout: false });
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
@@ -80,7 +80,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         console.log("here.....", req.session);
         req.session.user = user;
-        console.log(user.role)
+        console.log(user.role);
         if (user.role === "client") {
           return res.redirect(`/client/homepage`);
         } else {
@@ -108,7 +108,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
+  res.render("auth/login", { layout: false });
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
@@ -147,8 +147,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        if (user.role === "client"){
-          return res.redirect(`/client/homepage`)
+        if (user.role === "client") {
+          return res.redirect(`/client/homepage`);
         } else {
           return res.redirect(`/instructor/homepage`);
         }

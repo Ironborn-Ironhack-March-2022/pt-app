@@ -40,6 +40,14 @@ body {
   align-items: center;
 }
 
+#exercise-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 /* index page */
 
 /* HOMEPAGE */
@@ -196,7 +204,6 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-
   }
 
   .topnav {
@@ -330,7 +337,7 @@ br {
   margin: 30;
 }
 
-.radio-div{
+.radio-div {
   width: 100%;
 }
 
@@ -346,6 +353,6 @@ br {
   flex-direction: row-reverse-start;
 }
 
-.front-page-logo{
+.front-page-logo {
   width: 40%;
 }

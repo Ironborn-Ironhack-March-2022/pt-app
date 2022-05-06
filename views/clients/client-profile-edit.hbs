@@ -1,10 +1,6 @@
 <h1>Edit Your Profile {{client.userName}}</h1>
 
-<form
-  action="/client/edit-profile"
-  method="post"
-  enctype="multipart/form-data"
->
+<form action="/client/edit-profile" method="post" enctype="multipart/form-data">
   <h4>Profile Details</h4>
   <br />
   <label>Username:
@@ -14,27 +10,16 @@
     <input type="text" name="email" value="{{client.userName}}" />
   </label>
   <label>Edit About:
-    <br>
+    <br />
     <textarea type="text" name="about" cols="30" rows="10">{{client.about}}
     </textarea>
+    <br />
   </label>
   <label>Edit profile picture:
     <input type="file" id="image_input" name="file" accept="image/*" />
   </label>
   <br />
   <br />
-  <br />
-  <h4>Measurements</h4>
-  <br />
 
-  <label>Height cm
-    <input type="number" name="" value=" " />
-  </label>
-  <label>Weight lb
-    <input type="number" name="" value=" " />
-  </label>
-  <br />
-  <br />
-  <br />
   <button>Submit</button>
 </form>

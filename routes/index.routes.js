@@ -3,7 +3,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index", { user: req.session.user });
+  res.render("index", { user: req.session.user, layout: false });
 });
 
 router.get("/homepage", isLoggedIn, (req, res, next) => {

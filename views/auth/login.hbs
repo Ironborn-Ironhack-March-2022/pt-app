@@ -1,26 +1,46 @@
- <header>
-  <div class="container" id="layout-header">
-        <img id="layout-logo" src="\images\My Personal Trainer-logos_black.png" alt="">
-  </div>
-</header>
+<html lang="en">
 
-<form action="/auth/login" method="POST">
-   <label> Username 
-      <input type="text" name="userName">
-   </label>
- 
-   <label> Password
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{appTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
-      <input type="password" name="password">
-   </label>
+  <body>
+    <header>
+      <div class="container" id="layout-header">
+        <img
+          id="layout-logo"
+          src="\images\My Personal Trainer-logos_black.png"
+          alt=""
+        />
+      </div>
+    </header>
 
+    <form action="/auth/login" method="POST">
+      <label>
+        Username
+        <input type="text" name="userName" />
+      </label>
 
-   <button type="submit">Submit</button>
-</form>
+      <label>
+        Password
+
+        <input type="password" name="password" />
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
 
     <form action="/auth/signup" method="GET">
-        <button type="submit">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+    {{#if errorMessage}}
+      {{errorMessage}}
+    {{/if}}
+    <script src="/js/script.js"></script>
+  </body>
+
+</html>
