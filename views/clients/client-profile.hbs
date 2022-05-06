@@ -1,24 +1,19 @@
 <img class="avatar" src="{{client.image}}" alt="" />
 
-  <h1>{{client.userName}}</h1>
-  <h3>Your details:</h3>
-  <p>About <strong>{{client.userName}}</strong>: {{client.about}}</p>
-  <p>User name: {{client.userName}}</p>
-  <p>Email: {{client.email}}</p>
+<h1>{{client.userName}}</h1>
+<h3>Your details:</h3>
+<p>About <strong>{{client.userName}}</strong>: {{client.about}}</p>
+<p>User name: {{client.userName}}</p>
+<p>Email: {{client.email}}</p>
 
 <form action="/client/edit-profile" method="get">
   <button>Edit your Profile </button>
 </form>
-<br />
-<form action="/exercises/{{client._id}}/favourites" method="get">
-  <button class="btn-large">Edit your Favorite Exercises</button>
-</form>
-{{!-- Is the above necessary, can't they just favourite things and then remove them on the favourite page --}}
 <br />
 <form action="/client/{{client._id}}/client-instructor" method="get">
   <button>Contact your Instructor</button>
 </form>
 
 <form action="/client/homepage" method="get">
-        <button>Return to homepage</button>
+  <button>Return to homepage</button>
 </form>

@@ -3,9 +3,7 @@ const User = require("../models/User.model");
 const path = require("path");
 const cloudinary = require("../config/cloudinary.config");
 const isClient = require("../middleware/isClient");
-const msg = [
-  "User not found",
-];
+const msg = ["User not found"];
 
 router.get("/homepage", isClient, (req, res, next) => {
   User.findById(req.session.user._id)
@@ -13,7 +11,7 @@ router.get("/homepage", isClient, (req, res, next) => {
     .then((instructorDetails) => {
       res.render("instructors/instructor-homepage.hbs", {
         instructor: instructorDetails,
-        msg: msg[req.query.msg]
+        msg: msg[req.query.msg],
       });
     })
     .catch((err) => {

@@ -28,34 +28,27 @@
   </div>
   <h1>List of exercises:</h1>
   {{#each exercises}}
-  <img src="{{this.image}}" alt="image of {{this.name}}" />
-  <h3>{{this.name}}</h3>
-  <div class="exercise-list-anchors">
-    <a href="/exercises/{{this._id}}">More details!</a>
-  </div>
-  <form action="/exercises/favorites/{{this._id}}" method="POST">
-    <button>Add to favorites </button>
-  </form>
+    <img src="{{this.image}}" alt="image of {{this.name}}" />
+    <h3>{{this.name}}</h3>
+    <div class="exercise-list-anchors">
+      <a href="/exercises/{{this._id}}">More details!</a>
+    </div>
+    <form action="/exercises/favorites/{{this._id}}" method="POST">
+      <button>Add to favorites </button>
+    </form>
   {{/each}}
 
   {{#if instructor}}
-  <div class="exercise-list-anchors xtra-margin">
-    <a href="/exercises/create">Create exercise!</a>
-  </div>
-  
-  <form action="/instructor/homepage" method="get">
-    <button>Return to homepage</button>
-  </form>
+    <div class="exercise-list-anchors xtra-margin">
+      <a href="/exercises/create">Create exercise!</a>
+    </div>
+
+    <form action="/instructor/homepage" method="get">
+      <button>Return to homepage</button>
+    </form>
   {{else}}
-  <form action="/client/homepage" method="get">
-    <button>Return to homepage</button>
-  </form>
+    <form action="/client/homepage" method="get">
+      <button>Return to homepage</button>
+    </form>
   {{/if}}
 </div>
-
-{{!-- Just to explain what I've done here I've passed through a check in the route 
-to this page so that if the user is an instructor it won't show the create exercise button
-as it is dead for clients. I also used this trick to prevent an error message from 
-occuring when using the return button as this page is used by both clients & instructors
-I wasn't sure if the search function was only for instructors but it can easily
-be added at the top in an if statement if so--}}
