@@ -7,11 +7,11 @@
   <p>Example amount of sets: {{exeInfo.sets}}</p>
 
   {{#if instructor}}
-    <form action="/exercises/{{_id}}/edit" method="get">
+    <form action="/exercises/{{exeInfo._id}}/edit" method="get">
       <button>Edit exercise!</button>
     </form>
 
-    <form action="/exercises/{{_id}}/delete" method="POST">
+    <form action="/exercises/{{exeInfo_id}}/delete" method="POST">
       <button>Delete Exercise</button>
     </form>
   {{/if}}
