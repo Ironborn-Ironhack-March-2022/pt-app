@@ -53,7 +53,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   // Search the database for a user with the userName submitted in the form
   User.findOne({ userName }).then((found) => {
-    console.log(userName);
     // If the user is found, send the message userName is taken
     if (found) {
       return res
@@ -78,9 +77,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return User.create(userDetails);
       })
       .then((user) => {
-        console.log("here.....", req.session);
         req.session.user = user;
-        console.log(user.role);
         if (user.role === "client") {
           return res.redirect(`/client/homepage`);
         } else {
@@ -88,7 +85,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
         }
       })
       .catch((error) => {
-        console.log(error);
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)

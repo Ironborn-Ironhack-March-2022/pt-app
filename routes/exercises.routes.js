@@ -101,6 +101,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
     })
     .catch((error) => {
       console.log("Could not load Exercise list:", error);
+      next(error);
     });
 });
 
@@ -121,7 +122,6 @@ router.post(
     } else {
       imageInfo = req.file.path;
     }
-    console.log(req.file);
     const newInfo = {
       name: req.body.name,
       category: req.body.category,
@@ -136,6 +136,7 @@ router.post(
       })
       .catch((error) => {
         console.log("Could not create new Exercise", error);
+        next(error);
       });
   }
 );
@@ -155,6 +156,7 @@ router.get("/:exerciseId", isLoggedIn, (req, res, next) => {
     })
     .catch((error) => {
       console.log("could not find exercise", error);
+      next(error);
     });
 });
 
@@ -166,6 +168,7 @@ router.get("/:exerciseId/edit", isClient, (req, res, next) => {
     })
     .catch((error) => {
       console.log("could not find exercise", error);
+      next(error);
     });
 });
 
@@ -176,7 +179,6 @@ router.post(
   (req, res, next) => {
     const exercise = Exercise.findById(req.params.exerciseId);
     let imageInfo;
-    console.log(req.file);
     if (req.file !== undefined) {
       imageInfo = req.file.path;
     } else if (req.file === undefined) {
@@ -197,6 +199,7 @@ router.post(
       })
       .catch((error) => {
         console.log("could not find exercise", error);
+        next(error);
       });
   }
 );
@@ -209,6 +212,7 @@ router.post("/:exerciseId/delete", isClient, (req, res, next) => {
     })
     .catch((error) => {
       console.log("could not delete exercise:", error);
+      next(error);
     });
 });
 

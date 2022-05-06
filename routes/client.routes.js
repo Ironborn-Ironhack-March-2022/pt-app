@@ -13,7 +13,6 @@ const messages = [
 router.get("/homepage", (req, res, next) => {
   User.findById(req.session.user._id)
     .then((clientDetails) => {
-      console.log(clientDetails);
       res.render("clients/client-homepage", {
         client: clientDetails,
         msg: messages[req.query.msg],
@@ -49,7 +48,6 @@ router.get("/edit-profile", (req, res, next) => {
 router.post("/edit-profile", cloudinary.single("file"), (req, res, next) => {
   let user = req.session.user;
   let imageInfo;
-  console.log(req.file);
   if (req.file !== undefined) {
     imageInfo = req.file.path;
   } else if (req.file === undefined) {
